@@ -5,7 +5,7 @@
 | :------------: | :------------: | :--------------: | :--------: | :----------: | :------------: | :--------------: | :--------: |
 | [📓](#基础归纳) | [📃](#源码分析) | [🕕](#常见面试题) | [⌛️](#算法) | [💾](#数据库) | [💻](#操作系统) | [☁️](#计算机网络) | [🔧](#工具) |
 
-<img src="https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210403192938.jpeg" alt="go_monkey" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/GolangGuide.jpg" alt="go_monkey" style="zoom:50%;" />
 
 ## 基础归纳📓 
 
