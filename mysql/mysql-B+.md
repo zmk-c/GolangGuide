@@ -14,7 +14,7 @@
 
 首先，让我们先看一张图
 
-![image-20210408114457818](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408114457.png)
+<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91.webp" alt="图片" style="zoom: 67%;" />
 
 从图中可以看到，我们为user表（用户信息表）建立了一个二叉查找树的索引。图中的圆为二叉查找树的节点，节点中存储了键(key)和数据(data)。
 
@@ -34,7 +34,7 @@
 
 上面我们讲解了利用二叉查找树可以快速的找到数据。但是，如果上面的二叉查找树是这样的构造：
 
-![image-20210408114541171](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408114541.png)
+<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.webp" alt="图片" style="zoom:50%;" />
 
 这个时候可以看到我们的二叉查找树变成了一个链表。
 
@@ -49,7 +49,7 @@
 
 下面是平衡二叉树和非平衡二叉树的对比：
 
-![image-20210408114603025](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408114603.png)
+<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E9%9D%9E%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AF%B9%E6%AF%94.webp" alt="图片" style="zoom: 50%;" />
 
 
 由平衡二叉树的构造我们可以发现第一张图中的二叉树其实就是一棵平衡二叉树。
@@ -77,15 +77,15 @@
 
 可以想象到二叉树的节点将会非常多，高度也会及其高，我们查找数据时也会进行很多次磁盘IO，我们查找数据的效率将会极低！
 
-![image-20210408114627394](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408114627.png)
+<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/B%E6%A0%91.webp" alt="图片" style="zoom: 50%;" />
 
 为了解决平衡二叉树的这个弊端，我们应该寻找一种单个节点可以存储多个键值和数据的平衡树。也就是我们接下来要说的B树。 
 
 B树（Balance Tree）即为平衡树的意思，下图即是一颗B树。
 
-![](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408114627.png)
+![图片](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/B%E6%A0%91%E8%AF%A6%E7%BB%86.webp)
 
-图中的p节点为指向子节点的指针，二叉查找树和平衡二叉树其实也有，因为图的美观性，被省略了。- 图中的每个节点称为页，页就是我们上面说的磁盘块，在mysql中数据读取的基本单位都是页，所以我们这里叫做页更符合mysql中索引的底层数据结构。
+> 图中的p节点为指向子节点的指针，二叉查找树和平衡二叉树其实也有，因为图的美观性，被省略了。- 图中的每个节点称为页，页就是我们上面说的磁盘块，在mysql中数据读取的基本单位都是页，所以我们这里叫做页更符合mysql中索引的底层数据结构。
 
 从上图可以看出，B树相对于平衡二叉树，每个节点存储了更多的键值(key)和数据(data)，并且每个节点拥有更多的子节点，子节点的个数一般称为阶，上述图中的B树为3阶B树，高度也会很低。 
 基于这个特性，B树查找数据读取磁盘的次数将会很少，数据的查找效率也会比平衡二叉树高很多。 
@@ -100,7 +100,7 @@ B树（Balance Tree）即为平衡树的意思，下图即是一颗B树。
 
 B+树是对B树的进一步优化。让我们先来看下B+树的结构图：
 
-![image-20210408114716074](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408114716.png)
+![图片](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/B+%E6%A0%91.webp)
 
 根据上图我们来看下B+树和B树有什么不同。 
 
@@ -110,7 +110,8 @@ B+树是对B树的进一步优化。让我们先来看下B+树的结构图：
 有心的读者可能还发现上图B+树中各个页之间是通过双向链表连接的，叶子节点中的数据是通过单向链表连接的。
 其实上面的B树我们也可以对各个节点加上链表。其实这些不是它们之前的区别，是因为在mysql的innodb存储引擎中，索引就是这样存储的。也就是说上图中的B+树索引就是innodb中B+树索引真正的实现方式，准确的说应该是聚集索引（聚集索引和非聚集索引下面会讲到）。
 通过上图可以看到，在innodb中，我们通过数据页之间通过双向链表连接以及叶子节点中数据之间通过单向链表连接的方式可以找到表中所有的数据。
-MyISAM中的B+树索引实现与innodb中的略有不同。在MyISAM中，B+树索引的叶子节点并不存储数据，而是存储数据的文件地址。
+
+> MyISAM中的B+树索引实现与innodb中的略有不同。在MyISAM中，B+树索引的叶子节点并不存储数据，而是存储数据的文件地址。
 
 ## 聚集索引 VS 非聚集索引
 
@@ -128,7 +129,7 @@ MyISAM中的B+树索引实现与innodb中的略有不同。在MyISAM中，B+树�
 前面我们讲解B+树索引的时候并没有去说怎么在B+树中进行数据的查找，主要就是因为还没有引出聚集索引和非聚集索引的概念。下面我们通过讲解如何通过聚集索引以及非聚集索引查找数据表中数据的方式介绍一下B+树索引查找数据方法。
 利用聚集索引查找数据
 
-![image-20210408114756503](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408114756.png)
+![图片](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%88%A9%E7%94%A8%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE.webp)
 
 还是这张B+树索引图，现在我们应该知道这就是聚集索引，表中的数据存储在其中。现在假设我们要查找id>=18并且id<40的用户数据。对应的sql语句为`select * from user where id>=18 and id <40`，其中id为主键。具体的查找过程如下：
 
@@ -151,16 +152,19 @@ MyISAM中的B+树索引实现与innodb中的略有不同。在MyISAM中，B+树�
 
 下面看下具体的查找流程图：
 
-![image-20210408114835466](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408114835.png)
+![图片](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%85%B7%E4%BD%93.webp)
 
 利用非聚集索引查找数据
 
-![image-20210408114856086](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408114856.png)
+![图片](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E9%9D%9E%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%9F%A5%E6%89%BE.webp)
 
 读者看到这张图的时候可能会蒙，这是啥东西啊？怎么都是数字。
 如果有这种感觉，请仔细看下图中红字的解释。什么？还看不懂？那我再来解释下吧。首先，这个非聚集索引表示的是用户幸运数字的索引（为什么是幸运数字？一时兴起想起来的:-)），此时表结构是这样的。
 
-![image-20210408114927796](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408114927.png)
+| id   | name | luckyNum |
+| :--- | :--- | :------- |
+| 1    | zs   | 23       |
+| 2    | ls   | 7        |
 
 在叶子节点中，不在存储所有的数据了，存储的是键值和主键。
 
@@ -170,9 +174,9 @@ MyISAM中的B+树索引实现与innodb中的略有不同。在MyISAM中，B+树�
 
 下面看下具体的查找流程图：
 
-![image-20210408114953826](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408114954.png)
+![图片](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%85%B7%E4%BD%93%E7%BB%86%E8%8A%82.webp)
 
-在MyISAM中，聚集索引和非聚集索引的叶子节点都会存储数据的文件地址。
+> 在MyISAM中，聚集索引和非聚集索引的叶子节点都会存储数据的文件地址。
 
 ## 总结
 

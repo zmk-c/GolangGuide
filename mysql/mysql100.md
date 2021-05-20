@@ -125,7 +125,7 @@
 
 何时使用聚集索引或非聚集索引？
 
-![image-20210408115233703](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408115233.png)
+![img](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%88%96%E9%9D%9E%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95.webp)
 
 
 ## 8. limit 1000000 加载很慢的话，你是怎么解决的呢？
@@ -201,13 +201,13 @@ select * from User where name=‘jay’ for update
 
 悲观锁她专一且缺乏安全感了，她的心只属于当前事务，每时每刻都担心着它心爱的数据可能被别的事务修改，所以一个事务拥有（获得）悲观锁后，其他任何事务都不能对数据进行修改啦，只能等待锁被释放才可以执行。
 
-![image-20210408115322089](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408115322.png)
+<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E6%82%B2%E8%A7%82%E9%94%81.webp" alt="img" style="zoom:50%;" />
 
 ### 乐观锁：
 
 乐观锁的“乐观情绪”体现在，它认为数据的变动不会太频繁。因此，它允许多个事务同时对数据进行变动。实现方式：乐观锁一般会使用版本号机制或CAS算法实现。
 
-![image-20210408115348375](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408115348.png)
+<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E4%B9%90%E8%A7%82%E9%94%81.webp" alt="img" style="zoom:50%;" />
 
 ## 14. SQL优化的一般步骤是什么，怎么看执行计划（explain），如何理解其中各个字段的含义。
 
@@ -348,7 +348,7 @@ MVCC,多版本并发控制,它是通过读取历史版本的数据，来降低�
 
 嘻嘻，先复习一下主从复制原理吧，如图：
 
-![image-20210408115622873](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408115623.png)
+![img](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6.webp)
 
 主从复制分了五个步骤进行：
 
@@ -400,7 +400,7 @@ MVCC,多版本并发控制,它是通过读取历史版本的数据，来降低�
 
 先看一下Mysql的逻辑架构图吧~
 
-![image-20210408115811317](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408115811.png)
+![img](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/mysql%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84%E5%9B%BE.webp)
 
 ### Mysql逻辑架构图主要分三层：
 
@@ -465,7 +465,7 @@ MVCC,多版本并发控制,它是通过读取历史版本的数据，来降低�
 
 ## 33.  Mysql中有哪几种锁，列举一下？
 
-![image-20210408115904762](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408115904.png)
+<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%93%AA%E5%87%A0%E7%A7%8D%E9%94%81.webp" alt="img" style="zoom:50%;" />
 
 如果按锁粒度划分，有以下3种：
 
@@ -651,7 +651,7 @@ CREATE INDEX index_name ON table_name (column);
 
 锁兼容性如下：
 
-![image-20210408120606587](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408120606.png)
+<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E9%94%81%E5%85%BC%E5%AE%B9%E6%80%A7.webp" alt="img" style="zoom:50%;" />
 
 ## 58. MySQL中InnoDB引擎的行锁是怎么实现的？
 
@@ -667,7 +667,7 @@ for update 可以根据条件来完成行锁锁定，并且 id 是有索引键�
 
 死锁是指两个或多个事务在同一资源上相互占用，并请求锁定对方的资源，从而导致恶性循环的现象。看图形象一点，如下：
 
-![](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408120626.png)
+<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E6%AD%BB%E9%94%81.webp" alt="img" style="zoom:50%;" />
 
 死锁有四个必要条件：互斥条件，请求和保持条件，环路等待条件，不剥夺条件。
 解决死锁思路，一般就是切断环路，尽量避免并发形成环路。
@@ -825,7 +825,7 @@ MySQL 数据库中有六种触发器：
 
 ## 76.  一条Sql的执行顺序？
 
-![image-20210408120708116](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408120708.png)
+<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/sql%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F.webp" alt="img" style="zoom:50%;" />
 
 ## 77.  列值为NULL时，查询是否会用到索引？
 
@@ -920,7 +920,7 @@ Mysql驱动程序主要帮助编程语言与 MySQL服务端进行通信，如连
 
 如下图所示：
 
-![image-20210408143835446](https://raw.githubusercontent.com/zmk-c/GolangGuide/master/img/20210408143835.png)
+![img](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/mysql%E5%A4%8D%E5%88%B6%E5%8E%9F%E7%90%86.webp)
 
 上图主从复制分了五个步骤进行：
 
