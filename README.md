@@ -50,22 +50,21 @@
 
 ## 数据库 💾 
 
-- ### Redis
+- ### MySQL
   
+  - [MySQL基础](mysql/base.md)
+  - [MySQL数据库经典面试题解析](mysql/mysql100.md)
+  - [MySQL InnoDB MVCC 机制的原理及实现](mysql/mysql_mvcc.md)
+  - [为什么MySQL使用B+树做索引？](mysql/mysql-B+.md)
+  
+- ### Redis
+
   - [Redis基础](redis/base.md)
   - [Redis持久化原理及优化](redis/persistence.md)
   - [Redis中的主从复制原理](redis/master-slave.md)
   - [Redis中的内存淘汰策略](redis/memory.md)
   - [Redis缓存雪崩、击穿、穿透及解决方案](redis/solution.md)
   - [Redis常见问题](redis/faq.md)
-  
-- ### MySQL
-  
-  - [MySQL基础](mysql/base.md)
-  
-  - [MySQL数据库经典面试题解析](mysql/mysql100.md)
-  - [MySQL InnoDB MVCC 机制的原理及实现](mysql/mysql_mvcc.md)
-  - [为什么MySQL使用B+树做索引？](mysql/mysql-B+.md)
 
 ## 操作系统💻
 
@@ -85,8 +84,8 @@
 
 - ### Docker
   
-  - [docker基础](docker/docker.md)
-  - [docker-compose容器编排技术](docker/docker-compose.md)
+  - [docker](docker/docker.md)
+  - [docker-compose](docker/docker-compose.md)
   
 - ### Kubernetes
 
