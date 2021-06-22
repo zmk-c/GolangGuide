@@ -1275,3 +1275,205 @@ Docker使用的是Linux的桥接，宿主机是一个Docker容器的网桥docker
 
 ![image-20210621212339233](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%B0%8F%E7%BB%93.png)
 
+### 2.--link
+
+> 思考一个场景，我们编写了一个微服务，database url=ip，项目不重启，数据库ip换掉了，我们希望可以处理这个问题，可以用名字来进行访问容器
+
+```shell
+#启动centos01容器
+[zmk@centos7 home]$ docker run -it --name centos01 centos /bin/bash
+[root@d8627a36e0c7 /
+[zmk@centos7 home]$ docker ps
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS          PORTS     NAMES
+d8627a36e0c7   centos    "/bin/bash"   14 seconds ago   Up 13 seconds             centos01
+#启动centos02容器
+[zmk@centos7 home]$ docker run -it --name centos02 centos /bin/bash
+#测试是否能通过容器名ping通centos01容器
+[root@3fd672e488ae /]# ping centos01
+ping: centos01: Name or service not known
+
+#发现ping不通，那么如何解决呢？
+--link 
+#使用--link将centos02容器与centos03容器连接起来
+[zmk@centos7 home]$ docker run -it --name centos03 --link centos02 centos /bin/bash
+#这时候发现centos03可以ping通centos02容器了
+[root@bf5ff9ce2424 /]# ping centos02
+PING centos02 (172.17.0.3) 56(84) bytes of data.
+64 bytes from centos02 (172.17.0.3): icmp_seq=1 ttl=64 time=0.154 ms
+64 bytes from centos02 (172.17.0.3): icmp_seq=2 ttl=64 time=0.110 ms
+64 bytes from centos02 (172.17.0.3): icmp_seq=3 ttl=64 time=0.107 ms
+
+#但是反向centos02却不能ping通centos03,需要配置
+```
+
+**原理**
+
+![image-20210622090026081](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/--link%E5%8E%9F%E7%90%86.png)
+
+![image-20210622090156556](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/centos02%E8%AE%BF%E9%97%AEcentos03.png)
+
+--link就是在`hosts`配置中增加了一个`172.17.0.3      centos02 3fd672e488ae`，我们现在用Docker已经不建议使用--link了，采用自定义网络的方式。Docker0不支持容器名连接访问，可以在自定义网络中配置通过容器名访问。
+
+### 3.自定义网络
+
+> 查看所有的docker网络
+
+![image-20210622090623821](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E7%9A%84docker%E7%BD%91%E7%BB%9C.png)
+
+##### 网络模式
+
+- bridger：桥接 docker默认（自己创建也使用bridger模式）
+- none：不配置网络
+- host：和宿主机共享网络
+- container：容器内网络联通（用的少）
+
+##### 创建网络
+
+```shell
+#命令：docker net create [参数] 网络名
+--driver 网络模式，默认采用桥接模式，不写也可以
+--subnet 子网掩码
+--gateway 网关
+
+[zmk@centos7 home]$ docker network create --driver bridge --subnet 192.168.0.0/16 --gateway 192.168.0.1 mynet
+d958a06ad0d7381de47b7ca390bda03a30c9ffd8ecc5889d88dad7328f7f5cdf
+#查看创建的网络
+[zmk@centos7 home]$ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+25dd1b75f4ec   bridge    bridge    local
+7031a83106ae   host      host      local
+d958a06ad0d7   mynet     bridge    local
+bf408a4b25cd   none      null      local
+```
+
+通过`docker network inspect 网络名`查看自己的网络
+
+![image-20210622092020950](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%BB%9C.png)
+
+在我们自定义的网络下启动两容器测试
+
+```shell
+#--net 网络名
+[zmk@centos7 home]$ docker run -it --name centos01 --net mynet centos /bin/bash
+
+[zmk@centos7 home]$ docker run -it --name centos02 --net mynet centos /bin/bash
+```
+
+![image-20210622092713673](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%AE%B9%E5%99%A8%E5%8A%A0%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BD%91%E7%BB%9C.png)
+
+这时候在自定义的网络中是非常完善的，可以通过加入到自定义网络中的容器名访问
+
+![image-20210622093014535](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BD%91%E7%BB%9C%E4%B8%AD%E9%80%9A%E8%BF%87%E5%AE%B9%E5%99%A8%E5%90%8D%E7%9B%B4%E6%8E%A5%E8%AE%BF%E9%97%AE.png)
+
+![image-20210622093102511](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%9C%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BD%91%E7%BB%9C%E4%B8%AD%E9%80%9A%E8%BF%87%E5%AE%B9%E5%99%A8%E5%90%8D%E7%9B%B4%E6%8E%A5%E5%8F%AF%E4%BB%A5%E8%AE%BF%E9%97%AE.png)
+
+> 小结
+
+我们自定义的网络docker都已经帮我们维护好了对应的关系，推荐这样使用网络。
+
+好处：不同的集群使用不同的网络，保证集群是安全和健康的。
+
+![image-20210622093741611](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%A5%BD%E5%A4%84.png)
+
+### 4.网络连通
+
+在上面的小结中我们如何能连通访问两个不同网段呢，正常情况下网卡直接是不能连通的，但是容器和网络可以连通。
+
+```shell
+#测试打通centos-net-01到mynet网络
+docker network connect [可选项] 网络名 容器名
+```
+
+![image-20210622155730721](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/docker%20connect%E6%96%B9%E6%B3%95.png)
+
+```shell
+#将docker centos-net-01连接到mynet网络中
+[zmk@centos7 home]$ docker network connect mynet centos-net-01
+#查看mynet网络
+[zmk@centos7 home]$ docker network inspect mynet
+```
+
+![image-20210622155351333](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A.png)
+
+一个容器两个ip地址，类似于公网ip和私网ip。
+
+打通成功
+
+![image-20210622160142937](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E6%89%93%E9%80%9A%E6%88%90%E5%8A%9F.png)
+
+##### 实战：部署redis集群
+
+模拟部署一个，当redis-master3号机器宕机后，redis-slaver3号顶上去的一个模型。
+
+![image-20210622160716279](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E9%83%A8%E7%BD%B2redis%E9%9B%86%E7%BE%A4.png)
+
+```shell
+#创建redis网卡
+docker network create redis --subnet 172.38.0.0/16
+
+#通过脚本创建六个redis配置
+for port in $(seq 1 6); 
+do 
+mkdir -p /home/redis/node-${port}/conf 
+touch /home/redis/node-${port}/conf/redis.conf 
+cat <<EOF >/home/redis/node-${port}/conf/redis.conf
+port 6379 
+bind 0.0.0.0
+cluster-enabled yes
+cluster-config-file nodes.conf
+cluster-node-timeout 5000
+cluster-announce-ip 172.38.0.1${port}
+cluster-announce-port 6379
+cluster-announce-bus-port 16379
+appendonly yes
+EOF
+done
+
+#启动脚本
+docker run -p 637${port}:6379 -p 1637${port}:16379 --name redis-${port} \
+-v /home/redis/node-${port}/data:/data \
+-v /home/redis/node-${port}/conf/redis.conf:/etc/redis/redis.conf \
+-d --net redis --ip 172.38.0.1${port} redis:5.0.9-alpine3.11 redis-server /etc/redis/redis.conf
+
+#启动以redis-1为例
+docker run -p 6371:6379 -p 16371:16379 --name redis-1 \
+-v /home/redis/node-1/data:/data \
+-v /home/redis/node-1/conf/redis.conf:/etc/redis/redis.conf \
+-d --net redis --ip 172.38.0.11 redis:5.0.9-alpine3.11 redis-server /etc/redis/redis.conf
+```
+
+6个redis启动成功
+
+![image-20210622164954091](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/6%E4%B8%AAredis%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F.png)
+
+```shell
+#创建集群
+redis-cli --cluster create 172.38.0.11:6379 172.38.0.12:6379 172.38.0.13:6379 172.38.0.14:6379 172.38.0.15:6379 172.38.0.16:6379 --cluster-replicas 1
+```
+
+创建成功
+
+![image-20210622171740238](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%88%9B%E5%BB%BA%E9%9B%86%E7%BE%A4.png)
+
+查看redis集群信息
+
+![image-20210622171852289](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E6%9F%A5%E7%9C%8Bredis%E9%9B%86%E7%BE%A4%E4%BF%A1%E6%81%AF.png)
+
+查看集群节点信息
+
+![image-20210622172340854](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E6%9F%A5%E7%9C%8B%E9%9B%86%E7%BE%A4%E8%8A%82%E7%82%B9%E4%BF%A1%E6%81%AF.png)
+
+测试
+
+```shell
+#可以看到172.38.0.12的机子进行了set操作
+127.0.0.1:6379> set test test-result
+-> Redirected to slot [6918] located at 172.38.0.12:6379
+OK
+```
+
+下面将172.38.0.12容器redis-2停止`docker stop redis-2`，再去get查询，如果能查询到，说明搭建的集群高可用
+
+![image-20210622172729012](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%8F%AF%E7%94%A8.png)
+
+>到目前为止，关于docker的基础已经学完了，再接再厉呀~
