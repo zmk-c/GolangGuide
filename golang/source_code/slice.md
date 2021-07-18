@@ -144,7 +144,7 @@ slice' cap = 4
 
 - 当 `high == low` 时，新 `slice` 为空。
 
-- 还有一点，`high` 和 `max` 必须在老数组或者老 `slice` 的容量（`cap`）范围内。
+- 还有一点，`high` 和 `max` 必须在旧数组或者旧切片的容量范围内。
 
 **这里引入一道题，对“截取”做一个好好的回顾：**
 
@@ -315,13 +315,13 @@ func growslice(et *_type, old slice, cap int) slice {
 
 如果只看前半部分，现在网上各种文章里说的 `newcap` 的规律是对的。现实是，后半部分还对 `newcap` 作了一个`内存对齐roundupsize`，这个**和内存分配策略相关**。
 
->  进行内存对齐之后，新 slice 的容量是要 `大于等于` 老 slice 容量的 `2倍`或者`1.25倍`。
+>  进行内存对齐之后，新 slice 的容量是要 `大于等于` 旧slice 容量的 `2倍`或者`1.25倍`。
 
 **例子分析：**
 
-`growslice`函数的参数依次是 `元素的类型，旧slice，新slice最小求的容量`。
+`growslice`函数的参数依次是 `元素的类型`，`旧slice`，`新slice最小求的容量`。
 
-例子中 `s` 原来只有 2 个元素，`len` 和 `cap` 都为 2，`append` 了三个元素后，长度变为 3，容量最小要变成 5，即调用 `growslice` 函数时，传入的第三个参数应该为 5。即 `cap=5`。而一方面，`doublecap` 是原 `slice`容量的 2 倍，等于 4。满足第一个 `if` 条件，所以 `newcap` 变成了 5。
+例子中 `s` 原来只有 2 个元素，`len` 和 `cap` 都为 2，append了三个元素后，长度变为 3，容量最小要变成 5，即调用 `growslice` 函数时，传入的第三个参数应该为 5。即 cap=5。而一方面，`doublecap` 是原 slice容量的 2 倍，等于 4。满足第一个 if 条件，所以 `newcap` 变成了 5。
 
 接着调用了 `roundupsize` 函数，传入` size=40`。（代码中`sys.PtrSize`是指一个指针的大小，在64位机上是8，即传入5*8）
 
@@ -331,7 +331,7 @@ func growslice(et *_type, old slice, cap int) slice {
 const PtrSize = 4 << (^uintptr(0) >> 63) 
 ```
 
-下面来看看`roundupsize`源码：
+下面来看看roundupsize源码：
 
 ```go
 // go 1.14 src/runtime/msize.go:13
