@@ -90,7 +90,7 @@ REDHAT_SUPPORT_PRODUCT_VERSION="7"
 
 ```shell
 #1.卸载旧的版本
-$ sudo yum remove docker \
+sudo yum remove docker \
                   docker-client \
                   docker-client-latest \
                   docker-common \
@@ -100,21 +100,21 @@ $ sudo yum remove docker \
                   docker-engine
                   
 #2.下载关于Docker的依赖环境
-$ sudo yum install -y yum-utils
+sudo yum install -y yum-utils
 
 #3.设置一下下载Docker的镜像源(这里用的国内得阿里源镜像)
-$ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
 #4.更新yum软件包索引
-$ sudo yum makecache fast
+sudo yum makecache fast
 
 #4.安装Docker
-$ sudo yum install docker-ce docker-ce-cli containerd.io
+sudo yum install docker-ce docker-ce-cli containerd.io
 
 #5.启动Docker服务
-$ sudo systemctl start docker
+sudo systemctl start docker
 设置开机自动启动
-$ sudo systemctl enable docker
+sudo systemctl enable docker
 ```
 
 可能会出现以下错误：
@@ -150,27 +150,27 @@ $ docker run hello-world
 #打开这个地址：http://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
 #使用支付宝快捷登录阿里云可以获取镜像地址
 #Docker版本要求≥1.12
-$ sudo mkdir -p /etc/docker
-$ sudo tee /etc/docker/daemon.json <<-'EOF'
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
 {
   "registry-mirrors": ["https://dwo2x23b.mirror.aliyuncs.com"]
 }
 EOF
 
 #7.重写加载配置文件
-$ sudo systemctl daemon-reload
+sudo systemctl daemon-reload
 
 #8.重启docker
-$ sudo systemctl restart docker
+sudo systemctl restart docker
 
 #9.卸载docker
-$ sudo yum remove docker-ce docker-ce-cli containerd.io
+sudo yum remove docker-ce docker-ce-cli containerd.io
 
-$ sudo rm -rf /var/lib/docker
-$ sudo rm -rf /var/lib/containerd
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
 ```
 
-至此，docker的安装就彻底完成啦！下面回顾以下docker的流程：
+至此，docker的安装就彻底完成啦！下面回顾以下docker run的流程：
 
 ![image-20210618091733437](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/docker%E6%B5%81%E7%A8%8B.png)
 
@@ -1322,10 +1322,10 @@ PING centos02 (172.17.0.3) 56(84) bytes of data.
 
 ##### 网络模式
 
-- bridger：桥接 docker默认（自己创建也使用bridger模式）
-- none：不配置网络
+- bridger：桥接模式 docker默认，多采用自定义桥接网络
+- none：不配置网络，但拥有自己的network namespace
 - host：和宿主机共享网络
-- container：容器内网络联通（用的少）
+- container：容器内网络联通，指定新创建的容器和已经存在的容器共享一个network namespace
 
 ##### 创建网络
 
