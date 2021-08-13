@@ -13,8 +13,6 @@
 
 结合上述两种情况，因此PBFT算法支持的最大容错节点数量是(n-1)/3。
 
-
-
 ## 二.PBFT共识算法流程
 
 **角色划分**
@@ -57,8 +55,6 @@ PBFT 算法的基本流程主要有以下四步：
 
 处理完毕后，节点会返回消息`<<REPLY,v,t,c,i,r>>`给客户端，当客户端收集到f+1个消息后，共识完成，这就是PBFT算法的全部流程。
 
-
-
 ## 三.垃圾回收
 
 根据前面的算法部分可以发现，我们需要不断地往log中插入消息，在`view change`时恢复需要用到。于是log很快就会变得很占内存，这时候需要有一种方式清理掉无用的log。当某一request已经被f+1个正常节点执行完毕后，并当view change可以向其他节点证明当前状态的正确性，与该request相关的message就可以删除了。
@@ -70,8 +66,6 @@ PBFT 算法的基本流程主要有以下四步：
 **什么是 stable checkpoint （稳定检查点）呢**？stable checkpoint 就是大部分节点 （2f+1个） 已经共识完成的最大请求序号。比如系统有 4 个节点，三个节点都已经共识完了的请求编号是 213 ，那么这个 213 就是 stable checkpoint 了，也就可以删除213 号之前的记录了。
 
 **什么是高低水位呢？**低水位就是stable checkpoint的序号n，高水位是stable checkpoint的序号n + K，其中K是定值，一般是C（上面提及到的某一定值）的整数倍。
-
-
 
 ## 四.视图更换（view change）
 
@@ -97,8 +91,6 @@ PBFT 算法的基本流程主要有以下四步：
 - O：pre-prepare消息的集合。假设 O 集合里消息的编号范围：（min～max），则 Min 为 V 集合最小的 stable checkpoint ， Max 为 V 集合中最大序号的 prepare 消息。最后一步执行 O 集合里的 pre-preapare 消息，每条消息会有两种情况: 如果 max-min>0，则产生消息 <<pre-prepare,v+1,n,d>> ；如果 max-min=0，则产生消息 <<pre-prepare,v+1,n,d(null)>>
 
 注意：replica节点不会发起 new-view 事件。对于主节点，发送 new-view 消息后会继续执行上个视图未处理完的请求，从 pre-prepare 阶段开始。其它节点验证 new-view 消息通过后，就会处理主节点发来的 pre-prepare 消息，这时执行的过程就是前面描述的PBFT过程。到这时，正式进入 v+1 （视图编号加1）的时代了。
-
-
 
 ## 五.优缺点
 
