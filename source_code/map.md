@@ -1,6 +1,6 @@
 # Go语言深度解析之map
 
-## 1.map是什么
+## map是什么
 
 `map`在计算机科学里，被称为相关数组、map、符号表或者字典，是由一组 `<key,value>` 对组成的抽象数据结构，并且同一个 key 只会出现一次。
 
@@ -88,7 +88,7 @@ type mapextra struct {
 }
 ```
 
-## 2.map的操作
+## map的操作
 
 ### 创建
 
@@ -212,7 +212,7 @@ m 长度是 5
 m 参数是  map[3:2 4:2 0:2 1:2 2:2]
 ```
 
-## 3.map的hash计算
+## map的hash计算
 
 在第一小节中我们知道bmap中存储的是key-value值，那么具体key是分配到哪个bucket呢？也就是bmap中的tophash是如何计算？
 
@@ -332,7 +332,7 @@ func mapaccess1(t *maptype, h *hmap, key unsafe.Pointer) unsafe.Pointer {
 }
 ```
 
-## 4.map的扩容
+## map的扩容
 
 使用哈希表的目的就是要快速查找到目标 key，然而，随着向 map 中添加的 key 越来越多，key 发生碰撞的概率也越来越大。bucket 中的 8 个 cell 会被逐渐塞满，查找、插入、删除 key 的效率也会越来越低。最理想的情况是一个 bucket 只装一个 key，这样，就能达到 `O(1)` 的效率，但这样空间消耗太大，用空间换时间的代价太高。
 
@@ -385,7 +385,7 @@ func tooManyOverflowBuckets(noverflow uint16, B uint8) bool {
 
 第 2 点：是对第 1 点的补充。就是说在装载因子比较小的情况下，这时候 map 的查找和插入效率也很低，而第 1 点识别不出来这种情况。表面现象就是计算装载因子的分子比较小，即 map 里元素总数少，但是 bucket 数量多（真实分配的 bucket 数量多，包括大量的 overflow bucket）。
 
-## 5.并发中的map
+## 并发中的map
 
 ### 安全性
 

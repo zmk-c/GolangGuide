@@ -1,6 +1,6 @@
 # Go语言深度解析之GPM调度器
 
-### 预前补充
+## 预前补充
 
 先来了解一下进程，线程和Goroutine
 
@@ -16,7 +16,7 @@
 
 **用户级线程即协程**，由应用程序创建与管理，协程必须与内核级线程绑定之后才能执行。**线程由 CPU 调度是抢占式的，协程由用户态调度是协作式的，一个协程让出 CPU 后，才执行下一个协程**。
 
-#### 内核级线程模型
+### 内核级线程模型
 
 ![img](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%86%85%E6%A0%B8%E7%BA%A7%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.webp)
 
@@ -34,7 +34,7 @@
 
 - 线程的创建与删除都需要CPU参与，成本大
 
-#### 用户级线程模型
+### 用户级线程模型
 
 ![img](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.webp)
 
@@ -52,19 +52,19 @@
 - 线程发生I/O或页面故障引起的阻塞时，如果调用阻塞系统调用则内核由于不知道有多线程的存在，而会阻塞整个进程从而阻塞所有线程, 因此同一进程中只能同时有一个线程在运行
 - 资源调度按照进程进行，多个处理机下，同一个进程中的线程只能在同一个处理机下分时复用
 
-#### 混合线程模型
+### 混合线程模型
 
 ![img](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E4%B8%A4%E7%BA%A7%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.webp)
 
 **混合线程模型中用户线程与内核线程是一对一关系（N : M）**。两级线程模型充分吸收上面两种模型的优点，尽量规避缺点。其线程创建在用户空间中完成，线程的调度和同步也在应用程序中进行。一个应用程序中的多个用户级线程被绑定到一些（小于或等于用户级线程的数目）内核级线程上。
 
-#### Go的线程模型
+### Go的线程模型
 
 **Golang在底层实现了混合型线程模型**。M即系统线程，由系统调用产生，一个M关联一个KSE，即两级线程模型中的系统线程。G为Groutine，即两级线程模型的的应用及线程。M与G的关系是N:M。
 
 ![img](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/golang%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.webp)
 
-### GMP模型
+## GMP模型
 
 <img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/20210512164931.png" alt="image-20210512164931081" style="zoom:50%;" />
 
@@ -90,7 +90,7 @@
 
    `M` 运行 `G`，`G` 执行之后，`M` 会从 `P `获取下一个 `G`，不断重复下去。
 
-#### 调度的生命周期
+### 调度的生命周期
 
 ![golang调度器生命周期 ](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E8%B0%83%E5%BA%A6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.webp)
 
@@ -107,7 +107,7 @@
 - M 运行 G
 - G 退出，再次回到 M 获取可运行的 G，这样重复下去，直到 main.main 退出，runtime.main 执行 Defer 和 Panic 处理，或调用 runtime.exit 退出程序。
 
-#### 调度的流程状态
+### 调度的流程状态
 
 ![img](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E8%B0%83%E5%BA%A6%E6%B5%81%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81.webp)
 
@@ -119,7 +119,7 @@
 - 当G因系统调用(syscall)阻塞时会阻塞M，此时P会和M解绑即**hand off**，并寻找新的idle的M，若没有idle的M就会新建一个M(流程5.1)。
 - 当G因channel或者network I/O阻塞时，不会阻塞M，M会寻找其他runnable的G；当阻塞的G恢复后会重新进入runnable进入P队列等待执行(流程5.3)
 
-#### 调度过程中阻塞
+### 调度过程中阻塞
 
 GMP模型的阻塞可能发生在下面几种情况：
 
@@ -129,17 +129,17 @@ GMP模型的阻塞可能发生在下面几种情况：
 - 等待锁
 - runtime.Gosched()
 
-##### 用户态阻塞
+#### 用户态阻塞
 
 当goroutine因为channel操作或者network I/O而阻塞时（实际上golang已经用netpoller实现了goroutine网络I/O阻塞不会导致M被阻塞，仅阻塞G），对应的G会被放置到某个wait队列(如channel的waitq)，该G的状态由_Gruning变为_Gwaitting，而M会跳过该G尝试获取并执行下一个G，如果此时没有runnable的G供M运行，那么M将解绑P，并进入sleep状态；当阻塞的G被另一端的G2唤醒时（比如channel的可读/写通知），G被标记为runnable，尝试加入G2所在P的runnext，然后再是P的Local队列和Global队列。
 
-##### 系统调用阻塞
+#### 系统调用阻塞
 
 当G被阻塞在某个系统调用上时，此时G会阻塞在_Gsyscall状态，M也处于 block on syscall 状态，此时的M可被抢占调度：执行该G的M会与P解绑，而P则尝试与其它idle的M绑定，继续执行其它G。如果没有其它idle的M，但P的Local队列中仍然有G需要执行，则创建一个新的M；当系统调用完成后，G会重新尝试获取一个idle的P进入它的Local队列恢复执行，如果没有idle的P，G会被标记为runnable加入到Global队列。
 
-#### GMP内部结构
+### GMP内部结构
 
-##### G的内部结构
+#### G的结构
 
 ```go
 type g struct {
@@ -170,7 +170,7 @@ G的状态有以下9种：
 | _Genqueue_unused  | 7    | 尚未使用。                                                   |
 | _Gcopystack       | 8    | 正在复制堆栈，并没有执行用户代码，也不在运行队列中。         |
 
-##### M的结构
+#### M的结构
 
 ```go
 type m struct {
@@ -192,7 +192,7 @@ type m struct {
 复制代码
 ```
 
-##### P的内部结构
+#### P的内部结构
 
 ```go
 type p struct {
@@ -232,7 +232,7 @@ P有以下5种状态：
 | _Pgcstop  | 3    | 暂停运行，此时系统正在进行 GC，直至 GC 结束后才会转变到下一个状态阶段。 |
 | _Pdead    | 4    | 废弃，不再使用。                                             |
 
-##### 调度器的内部结构
+#### 调度器的内部结构
 
 ```go
 type schedt struct {
@@ -267,7 +267,7 @@ type schedt struct {
 }
 ```
 
-### 为什么要有P
+## 为什么要有P
 
 如果是想实现本地队列、Work Stealing 算法，那为什么不直接在 M 上加呢，M 也照样可以实现类似的功能。为什么又要再多加一个组件P?
 

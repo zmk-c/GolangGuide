@@ -1,6 +1,6 @@
 # Go语言深度解析之slice
 
-## 1.slice是什么
+## slice是什么
 
 `slice` 翻译成中文就是`切片`，它和`数组（array）`很类似，可以用下标的方式进行访问，如果越界，就会产生 panic。但是它比数组更灵活，可以自动地进行扩容。
 
@@ -19,7 +19,7 @@ type slice struct {
 
 可以看到slice共有三个属性，每个属性的解释如上所示，其中在底层数组不进行扩容的情况下，容量也是 slice 可以扩张的最大限度。需要注意的是，**底层数组是可以被多个 slice 同时指向的**，因此对一个 slice 的元素进行操作是有可能影响到其他 slice 的。
 
-## 2.slice的创建
+## slice的创建
 
 创建 slice 的方式有以下几种：
 
@@ -227,7 +227,7 @@ s1[2] = 20
 
 最后打印 `s1` 的时候，只会打印出 `s1` 长度以内的元素。所以，只会打印出3个元素，虽然它的底层数组不止3个元素。
 
-## 3.slice的append操作
+## slice的append操作
 
 在2节最后一段提到了append操作，**下面让我们来看看slice的append操作到底做了什么**：
 
@@ -375,11 +375,11 @@ var size_to_class8 = [smallSizeMax/smallSizeDiv + 1]uint8{0, 1, 2, 3, 3, 4, 4, 5
 newcap = int(capmem / sys.PtrSize)  // 48 / 8 = 6
 ```
 
-## 4.为什么 nil slice 可以直接 append
+## 为什么 nil slice 可以直接 append
 
 其实 `nil slice` 或者 `empty slice` 都是可以通过调用 append 函数来获得底层数组的扩容。最终都是调用 `mallocgc` 来向 Go 的内存管理器申请到一块内存，然后再赋给原来的`nil slice` 或 `empty slice`，然后摇身一变，成为“真正”的 `slice` 了。
 
-## 5.传 slice 和 slice 指针有什么区别
+## 传 slice 和 slice 指针有什么区别
 
 当 slice 作为函数参数时，就是一个普通的结构体。其实很好理解：若直接传 slice，在调用者看来，实参 slice 并不会被函数中的操作改变；若传的是 slice 的指针，在调用者看来，是会被改变原 slice 的。
 

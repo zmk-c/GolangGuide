@@ -126,3 +126,6 @@
 | [sleuth](https://github.com/ursiform/sleuth)              | 用于在HTTP服务之间进行无主p2p自动发现和RPC的库（[ZeroMQ](https://github.com/zeromq/libzmq)）。 |
 | [tendermint](https://github.com/tendermint/tendermint)    | 高性能中间件，用于使用Tendermint共识和区块链协议将以任何编程语言编写的状态机转换为拜占庭容错复制状态机。 |
 | [torrent](https://github.com/anacrolix/torrent)           | BitTorrent客户端软件包。                                     |
+| 分布式链路追踪系统                                        | github.com/grpc-ecosystem/grpc-opentracing                   |
+|                                                           | github.com/openzipkin-contrib/zipkin-go-opentracing          |
+
