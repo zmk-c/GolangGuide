@@ -1,4 +1,4 @@
-# Go语言源码分析之slice
+# Go语言深度解析之slice
 
 ## 1.slice是什么
 

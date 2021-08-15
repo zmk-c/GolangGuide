@@ -1,4 +1,4 @@
-# Go语言源码分析之channel
+# Go语言深度解析之channel
 
 ## 1.什么是channel
 
