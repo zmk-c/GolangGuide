@@ -1070,8 +1070,6 @@ docker run -it --name docker02 --volumes-from docker01 zmk/centos:1.0
 
 ![image-20210621171552998](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E6%B5%8B%E8%AF%95%E5%88%A0%E9%99%A4docker01.png)
 
-**多个MySQL实现数据共享：**
-
 ## 六.Dockerfile
 
 Dockerfile的核心是用来构建docker镜像的文件！命令参数脚本！
@@ -1085,22 +1083,78 @@ Dockerfile的核心是用来构建docker镜像的文件！命令参数脚本！
 
 ### 2.Dockerfile文件指令
 
+**1、 FROM**
+
+指定基础镜像（必须有的指令，并且必须是第一条指令）
+
+**2、 WORKDIR**
+
+格式为 `WORKDIR` <工作目录路径>
+
+使用 `WORKDIR` 指令可以来**指定工作目录**（或者称为当前目录），以后各层的当前目录就被改为指定的目录，如果目录不存在，`WORKDIR` 会帮你建立目录
+
+**3、COPY**
+
+格式：
+
+```dockerfile
+COPY <源路径>... <目标路径>
+COPY ["<源路径1>",... "<目标路径>"]
+```
+
+`COPY` 指令将从构建上下文目录中 <源路径> 的文件/目录**复制**到新的一层的镜像内的 <目标路径> 位置
+
+**4、RUN**
+
+用于执行命令行命令
+
+格式：`RUN` <命令>
+
+**5、EXPOSE**
+
+格式为 `EXPOSE` <端口 1> [<端口 2>...]
+
+`EXPOSE` 指令是**声明运行时容器提供服务端口，这只是一个声明**，在运行时并不会因为这个声明应用就会开启这个端口的服务
+
+在 Dockerfile 中写入这样的声明有两个好处
+
+- 帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射
+- 运行时使用随机端口映射时，也就是 `docker run -P` 时，会自动随机映射 `EXPOSE` 的端口
+
+**6、ENTRYPOINT**
+
+`ENTRYPOINT` 的格式和 `RUN` 指令格式一样，分为两种格式
+
+- `exec` 格式：
+
+```dockerfile
+<ENTRYPOINT> "<CMD>"
+```
+
+- `shell` 格式：
+
+```dockerfile
+ENTRYPOINT [ "curl", "-s", "http://ip.cn" ]
+```
+
+`ENTRYPOINT` 指令是**指定容器启动程序及参数**
+
+**总结：更加丰富的操作**
+
 ```shell
-FROM		#基础镜像  centos ubuntu等,一切从这开始构建
+FROM		#基础镜像  centos ubuntu等,从这开始构建
 MAINTAINER  #镜像是谁写的，姓名+邮箱
 RUN         #镜像构建的时候需要运行的命令
 ADD			#步骤：搭建带有mysql镜像的容器，这个mysql压缩包需要添加进去
 WORKDIR     #镜像的工作目录
 VOLUME      #挂载的目录
 EXPOSE      #暴露端口配置，和-p一样
-CMD         #指定这个容器启动时要运行的目录，只有最后一个会生效，可被替代
+CMD         #指定这个容器启动时要运行的命令，只有最后一个会生效，可被替代
 ENTRYPOINT  #指定这个容器启动时要运行的命令，可以追加命令
 ONBUILD     #当构建一个被继承的DockerFile，这个时候就会运行ONBUILD指令，是一个触发指令
 COPY        #类似ADD，将我们的文件拷贝到镜像中
 ENV			#构建的时候设置环境变量
 ```
-
-![img](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/dockerfile%E6%8C%87%E4%BB%A4.jpeg)
 
 ##### 实战：构建自己的centos
 
@@ -1248,8 +1302,8 @@ PING 172.17.0.2 (172.17.0.2) 56(84) bytes of data.
 
 ```shell
 #我们发现这个容器带来网卡，都是一对一对的
-#evth-pair 就是一对的虚拟设备接口，都是成对出现的。一端连着协议，一端彼此相连。
-#正因为有这个特性，evth-pair充当桥梁，连接着各种虚拟网络设备。
+#veth-pair 就是一对的虚拟设备接口，都是成对出现的。一端连着协议，一端彼此相连。
+#正因为有这个特性，veth-pair充当桥梁，连接着各种虚拟网络设备。
 ```
 
 **测试centos02是否能ping通centos01**
@@ -1267,7 +1321,7 @@ PING 172.17.0.2 (172.17.0.2) 56(84) bytes of data.
 
 ![image-20210621211301416](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%9B%BE%E5%BD%A2%E8%A7%A3%E9%87%8A.png)
 
-结论：centos01和centos02是共有一个路由器`docker0`，所有的容器再不指定网络的情况下，都是docker0路由的，docker会给我们的容器分配一个默认的可用ip。
+结论：centos01和centos02是共有一个路由器`docker0`，**所有的容器再不指定网络的情况下，都是docker0路由的，docker会给我们的容器分配一个默认的可用ip**。
 
 > 小结
 
@@ -1277,7 +1331,7 @@ Docker使用的是Linux的桥接，宿主机是一个Docker容器的网桥docker
 
 ### 2.--link
 
-> 思考一个场景，我们编写了一个微服务，database url=ip，项目不重启，数据库ip换掉了，我们希望可以处理这个问题，可以用名字来进行访问容器
+> 思考一个场景，我们编写了一个微服务，database url=ip，项目不重启，数据库ip换掉了，我们希望可以处理这个问题，可以用`名字`来进行访问容器
 
 ```shell
 #启动centos01容器
