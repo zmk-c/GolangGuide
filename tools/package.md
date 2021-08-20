@@ -129,3 +129,31 @@
 | 分布式链路追踪系统                                        | github.com/grpc-ecosystem/grpc-opentracing                   |
 |                                                           | github.com/openzipkin-contrib/zipkin-go-opentracing          |
 
+
+
+
+
+```go
+1 各种配置文件读取和管理 https://github.com/go-ini/ini
+2 可以操作任何数据的包 比方sting 转换类型啊 方便编写代码   github.com/Unknwon/com
+3 数据库ORM 文档和库
+  3.1 文档地址 https://jasperxu.github.io/gorm-zh/models.html
+  3.2 库地址 github.com/go-sql-driver/mysql github.com/jinzhu/gorm
+4 热更新监听文件变化 重新启动服务 https://github.com/kataras/rizla
+5 接口文档应用swagger github.com/swaggo/swag/cmd/swag
+6 热重启golang 服务包 https://github.com/EDDYCJY/go-gin-example
+7 表单验证器 github.com/astaxie/beego/validation 可以用用
+8 https://github.com/Masterminds/squirrel sql神器
+golangweb项目热更新 go get github.com/pilu/fresh
+进入项目目录下：fresh启动
+jwt鉴权  github.com/dgrijalva/jwt-go
+安装swag go get -u github.com/swaggo/swag/cmd/swag@v1.6.5
+安装gin-swagger 
+go get -u github.com/swaggo/gin-swagger@v1.2.0 
+go get -u github.com/swaggo/files
+go get -u github.com/alecthomas/template
+
+定时任务  实现了 cron 规范解析器和任务运行器，简单来讲就是包含了定时任务所需的功能
+go get -u github.com/robfig/cron
+```
+
