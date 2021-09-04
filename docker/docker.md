@@ -340,6 +340,8 @@ Ctrl+P+Q  #容器不停止退出
 
 ##### `docker attach`进入正在运行的容器
 
+docker attach命令可以attach到一个已经运行的容器的stdin，然后进行命令执行的动作。但是需要注意的是，如果在这里输入`exit`，会导致**容器的停止**。
+
 ```shell
 [zmk@centos7 ~]$ docker start 28043ddc00c4
 28043ddc00c4
@@ -659,7 +661,7 @@ root    20689   20179     0      11:26      ?       00:00:00     /usr/bin/coreut
 
 ##### `docker exec`进入当前正在运行的容器
 
-我们通常容器都是使用后台的方式运行的，有时候需要进入容器，修改一些配置。
+可以看到，其中参数`-i -t -d`与`docker run`有些相同。其实，exec会进入创建一个伪终端，与直接`run`创建出来的相似。但是不同点在于，**不会因为输入`exit`而终止容器**。
 
 ```shell
 #命令 docker exec -it 容器id bashShell
