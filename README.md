@@ -48,8 +48,7 @@
 
 ## 算法 ⌛️ 
 
-- [《剑指offer》解析](https://github.com/zmk-c/go-offer)
-- [leetcode刷题顺序解析](https://github.com/zmk-c/leetcode)
+- [《剑指offer》](https://leetcode-cn.com/study-plan/lcof/)
 - 常见共识算法
   - [Raft协议](consensus/raft.md)
   - [PBFT协议](consensus/pbft.md)
