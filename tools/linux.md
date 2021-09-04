@@ -42,7 +42,7 @@ Linux系统中使用以下命令来查看文件的内容：
 
   ![image-20210720194236919](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/20210720194237.png)
 
-- `more` 一页一页的显示文件内容（空格表示翻页，enter 表示向下看一行，:f 行号）
+- `more` 一页一页的显示文件内容（空格表示翻页，enter 表示向下看一行，ctrl+b返回上一行，:f 行号）
 
 - `less` 与more类似，向前翻页（按q退出，pageDown/pageUp代表翻动页面）
 - `head` 只看头几行（head -行数 文件）
