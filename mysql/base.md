@@ -686,7 +686,7 @@ WHERE `address`='' OR `address` IS NULL;
 
 ### 4.4联表查询
 
-![join](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/7join.jpg)
+![1.jpg](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E8%BF%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2.jpeg)
 
 ```sql
 -- ===============  联表查询 join  ===================
