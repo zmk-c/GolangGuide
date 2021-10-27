@@ -9,7 +9,7 @@
 
 <img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/GolangGuide.jpg" alt="go_monkey" style="zoom:50%;" />
 
-## 面试题📝
+## 面试题 📝
 
 1. [Go 面试题： new 和 make 是什么，差异在哪？](https://mp.weixin.qq.com/s/tZg3zmESlLmefAWdTR96Tg)
 2. [Go 群友提问：Goroutine 数量控制在多少合适，会影响 GC 和调度？](https://mp.weixin.qq.com/s/uWP2X6iFu7BtwjIv5H55vw)
@@ -32,7 +32,7 @@
 19. [Go 是传值还是传引用？](https://mp.weixin.qq.com/s/qsxvfiyZfRCtgTymO9LBZQ)
 20. [回答我，停止 Goroutine 有几种方法？](https://mp.weixin.qq.com/s/tN8Q1GRmphZyAuaHrkYFEg)
 
-## 深度解析📃
+## 深度解析 📃
 
 1. [Go语言深度解析之slice](source_code/slice.md)
 2. [Go语言深度解析之map](source_code/map.md)
@@ -74,15 +74,15 @@
 
 - ### MongDB
 
-## 操作系统💻
+## 操作系统 💻
 
 - [操作系统基础](os/os.pdf)
 
-## 网络☁️
+## 网络 ☁️
 
 - [计算机网络基础](network/network.pdf)
 
-## Gin框架
+## Gin框架 🔲
 
 - [Go Gin 系列一：Go 介绍与环境安装](https://mp.weixin.qq.coam/s?__biz=MzUxMDI4MDc1NA==&mid=2247483714&idx=1&sn=0b536199884cb45a1316c77998895baf&chksm=f904141fce739d0978e02147507dc29fadee2e19ac312d34a3190062ae40e62a490fc58df6ae&scene=178&cur_album_id=1383459655464337409#rd)
 - [Go Gin 系列二：初始化项目及公共库](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483807&idx=1&sn=9c7aede4f675f2de49ddc08ab1a95a71&chksm=f90414c2ce739dd4b8711c0043286fba9744b8d9c86c75c7ac7750d28cd2fed43f749eb5de99&scene=178&cur_album_id=1383459655464337409#rd)
@@ -104,7 +104,7 @@
 - [番外：Golang 交叉编译](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483826&idx=1&sn=0d01b194dfba78f093134c69bab30e10&chksm=f90414efce739df9a3274ed894cd2e132b8616662f56178f3821478d9eddac812dca9d54688c&scene=178&cur_album_id=1383459655464337409#rd)
 - [番外：请入门 Makefile](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483826&idx=2&sn=386ad6739a1a076b643ff526aff703e7&chksm=f90414efce739df9f6ab6a7d86518b96b5f46c08c8d6f4e29ce03e33ae46053a8efda7d080a4&scene=178&cur_album_id=1383459655464337409#rd)
 
-## 容器化🎰
+## 容器化 🎰
 
 - ### gRPC
 
@@ -127,11 +127,11 @@
 
 - ### Kubernetes
 
-## 消息队列✉️
+## 消息队列 ✉️
 
 - ### RabbitMQ
 
-## 工具🔧 
+## 工具 🔧 
 
 - ### [Git](tools/git.md)
 
