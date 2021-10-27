@@ -1,11 +1,11 @@
 # GolangGuide	制作人——无__忧👦 
 汇总了一些关于Golang的资料提供查看，后续会继续补充完善，欢迎大家star~:smiley:
 
-感谢：公众号【 脑子进煎鱼了】，【码农桃花源】，【小白debug】
+感谢：公众号【 脑子进煎鱼了】，【码农桃花源】，【小白debug】，【小林coding】
 
 |    面试题    |    深度解析    |    算法    |    数据库    |    操作系统    |    网络    |    Gin框架    |    容器化    |    消息队列    |    工具    |
 | :----------: | :------------: | :--------: | :----------: | :------------: | :--------: | :-----------: | :----------: | :------------: | :--------: |
-| [📝](#面试题) | [📃](#深度分析) | [⌛️](#算法) | [💾](#数据库) | [💻](#操作系统) | [☁️](#网络) | [🔲](#Gin框架) | [🎰](#容器化) | [✉️](#消息队列) | [🔧](#工具) |
+| [📝](#面试题) | [📃](#深度分析) | [⌛](#算法) | [💾](#数据库) | [💻](#操作系统) | [☁](#网络) | [🔲](#Gin框架) | [🎰](#容器化) | [✉](#消息队列) | [🔧](#工具) |
 
 <img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/GolangGuide.jpg" alt="go_monkey" style="zoom:50%;" />
 
@@ -76,15 +76,11 @@
 
 ## 操作系统💻
 
-- [操作系统基础](os/os.md)
+- [操作系统基础](os/os.pdf)
 
 ## 网络☁️
 
-- [计算机网络基础](network/network.md)
-- [在B站看猫片被老板发现？不如按下F12学学HTTP](https://mp.weixin.qq.com/s?__biz=Mzg5NDY2MDk4Mw==&mid=2247486375&idx=1&sn=faab06e21d0db873c53d5c7b3237c45c&scene=19#wechat_redirect)
-- [“三次握手，四次挥手”你真的懂吗？](https://qcrao.com/2019/01/16/dive-into-three-way-handshake/)
-- [TCP粘包 数据包：我只是犯了每个数据包都会犯的错 |硬核图解](https://mp.weixin.qq.com/s/0-YBxU1cSbDdzcZEZjmQYA)
-- [硬核图解！30张图带你搞懂！路由器，集线器，交换机，网桥，光猫有啥区别？](http://mp.weixin.qq.com/s?__biz=Mzg5NDY2MDk4Mw==&mid=2247486378&idx=1&sn=64058fa5061f6ab3e7e1d9626357cc96&scene=19#wechat_redirect)
+- [计算机网络基础](network/network.pdf)
 
 ## Gin框架
 
