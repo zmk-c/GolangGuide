@@ -36,7 +36,7 @@ string 类型是 Redis 最基本的数据类型，**string 类型的值最大能
 
 #### 实战场景：
 
-1. 缓存： 更直观，相比string更节省空间，的维护缓存信息，如用户信息，视频信息等。
+1. 缓存： 更直观，相比string更节省空间，hash维护缓存信息，如用户信息，视频信息等。
 
 #### 示例：
 
@@ -127,7 +127,7 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 | 1    | [DEL key](https://www.runoob.com/redis/keys-del.html) 该命令用于在 key 存在时删除 key。不存在的key会被忽略，返回被删除key的数量。 |
 | 2    | [DUMP key](https://www.runoob.com/redis/keys-dump.html) 序列化给定 key ，并返回被序列化的值。 |
 | 3    | [EXISTS key](https://www.runoob.com/redis/keys-exists.html) 检查给定 key 是否存在。 |
-| 4    | [EXPIRE key](https://www.runoob.com/redis/keys-expire.html) seconds 为给定 key 设置过期时间，key过期后将被删除不可再使用，以秒计。 |
+| 4    | [EXPIRE key seconds](https://www.runoob.com/redis/keys-expire.html)  为给定 key 设置过期时间，key过期后将被删除不可再使用，以秒计。 |
 | 5    | [EXPIREAT key timestamp](https://www.runoob.com/redis/keys-expireat.html) EXPIREAT 的作用和 EXPIRE 类似，都用于为 key 设置过期时间。 不同在于 EXPIREAT 命令接受的时间参数是 UNIX 时间戳(unix timestamp)。 |
 | 6    | [PEXPIRE key milliseconds](https://www.runoob.com/redis/keys-pexpire.html) 设置 key 的过期时间以毫秒计。 |
 | 7    | [PEXPIREAT key milliseconds-timestamp](https://www.runoob.com/redis/keys-pexpireat.html) 设置 key 过期时间的时间戳(unix timestamp) 以毫秒计。 |
@@ -141,8 +141,6 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 | 15   | [RENAMENX key newkey](https://www.runoob.com/redis/keys-renamenx.html) 仅当 newkey 不存在时，将 key 改名为 newkey 。 |
 | 16   | [SCAN cursor [MATCH pattern\] [COUNT count]](https://www.runoob.com/redis/keys-scan.html) 迭代数据库中的数据库键。 |
 | 17   | [TYPE key](https://www.runoob.com/redis/keys-type.html) 返回 key 所储存的值的类型。 |
-
-
 
 ## 3.Redis 字符串命令
 
@@ -171,8 +169,6 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 | 19   | [DECRBY key decrement](https://www.runoob.com/redis/strings-decrby.html) key 所储存的值减去给定的减量值（decrement） 。 |
 | 20   | [APPEND key value](https://www.runoob.com/redis/strings-append.html) 如果 key 已经存在并且是一个字符串， APPEND 命令将指定的 value 追加到该 key 原来值（value）的末尾。 |
 
-
-
 ## 4.Redis hash 命令
 
 下表列出了 redis hash 基本的相关命令：
@@ -191,8 +187,6 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 | 12   | [HSETNX key field value](https://www.runoob.com/redis/hashes-hsetnx.html) 只有在字段 field 不存在时，设置哈希表字段的值。 |
 | 13   | [HVALS key](https://www.runoob.com/redis/hashes-hvals.html) 获取哈希表中所有值。 |
 | 14   | [HSCAN key cursor [MATCH pattern\] [COUNT count]](https://www.runoob.com/redis/hashes-hscan.html) 迭代哈希表中的键值对。 |
-
-
 
 ## 5.Redis 列表命令
 
@@ -218,8 +212,6 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 | 16   | [RPUSH key value1 [value2]](https://www.runoob.com/redis/lists-rpush.html) 在列表中添加一个或多个值 |
 | 17   | [RPUSHX key value](https://www.runoob.com/redis/lists-rpushx.html) 为已存在的列表添加值 |
 
-
-
 ## 6.Redis 集合命令
 
 下表列出了 Redis 集合基本命令：
@@ -241,8 +233,6 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 | 13   | [SUNION key1 [key2]](https://www.runoob.com/redis/sets-sunion.html) 返回所有给定集合的并集 |
 | 14   | [SUNIONSTORE destination key1 [key2]](https://www.runoob.com/redis/sets-sunionstore.html) 所有给定集合的并集存储在 destination 集合中 |
 | 15   | [SSCAN key cursor [MATCH pattern\] [COUNT count]](https://www.runoob.com/redis/sets-sscan.html) 迭代集合中的元素 |
-
-
 
 ## 7.Redis 有序集合命令
 
@@ -270,3 +260,11 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 | 18   | [ZSCORE key member](https://www.runoob.com/redis/sorted-sets-zscore.html) 返回有序集中，成员的分数值 |
 | 19   | [ZUNIONSTORE destination numkeys key [key ...]](https://www.runoob.com/redis/sorted-sets-zunionstore.html) 计算给定的一个或多个有序集的并集，并存储在新的 key 中 |
 | 20   | [ZSCAN key cursor [MATCH pattern\] [COUNT count]](https://www.runoob.com/redis/sorted-sets-zscan.html) 迭代有序集合中的元素（包括元素成员和元素分值） |
+
+## 补充
+
+redis 默认有0-15总共16个库，默认在0库
+
+1. **选择DB0库**：select 0
+2. **查看所选择库的大小**：dbsize
+3. **删除特定的redis库的所有Key**：flushdb
