@@ -483,7 +483,7 @@ G1 和 G2 被挂起了，状态是 `WAITING`。关于 goroutine 调度器这块�
 
 G1 脱离与 M 的关系，但调度器可不会让 M 闲着，所以会接着调度另一个 goroutine 来运行：
 
-[![G1 waiting](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/20210815202642.png)
+![G1 waiting](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/20210815202642.png)
 
 G2 也是同样的遭遇。现在 G1 和 G2 都被挂起了，等待着一个 sender 往 channel 里发送数据，才能得到解救。
 
