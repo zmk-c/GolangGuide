@@ -16,9 +16,9 @@ string 类型是 Redis 最基本的数据类型，**string 类型的值最大能
 
 #### 实战场景：
 
-1. **缓存功能：**String字符串是最常用的数据类型，不仅仅是Redis，各个语言都是最基本类型，因此，利用Redis作为缓存，配合其它数据库作为存储层，利用Redis支持高并发的特点，可以大大加快系统的读写速度、以及降低后端数据库的压力。
-2. **计数器：**许多系统都会使用Redis作为系统的实时计数器，可以快速实现计数和查询的功能。而且最终的数据结果可以按照特定的时间落地到数据库或者其它存储介质当中进行永久保存。
-3. **共享用户Session：**用户重新刷新一次界面，可能需要访问一下数据进行重新登录，或者访问页面缓存Cookie，但是可以利用Redis将用户的Session集中管理，在这种模式只需要保证Redis的高可用，每次用户Session的更新和获取都可以快速完成。大大提高效率。
+1. **缓存功能**：String字符串是最常用的数据类型，不仅仅是Redis，各个语言都是最基本类型，因此，利用Redis作为缓存，配合其它数据库作为存储层，利用Redis支持高并发的特点，可以大大加快系统的读写速度、以及降低后端数据库的压力。
+2. **计数器**：许多系统都会使用Redis作为系统的实时计数器，可以快速实现计数和查询的功能。而且最终的数据结果可以按照特定的时间落地到数据库或者其它存储介质当中进行永久保存。
+3. **共享用户Session**：用户重新刷新一次界面，可能需要访问一下数据进行重新登录，或者访问页面缓存Cookie，但是可以利用Redis将用户的Session集中管理，在这种模式只需要保证Redis的高可用，每次用户Session的更新和获取都可以快速完成。大大提高效率。
 
 #### 示例：
 
@@ -61,8 +61,8 @@ Redis 列表是简单的字符串列表（双端队列实现），按照插入�
 
 #### 实战场景：
 
-1. **消息队列：**Redis的链表结构，可以轻松实现阻塞队列，可以使用左进右出的命令组成来完成队列的设计。比如：数据的生产者可以通过lpush命令从左边插入数据，多个数据消费者，可以使用brpop命令阻塞的“抢”列表尾部的数据。
-2. **文章列表或者数据分页展示的应用：**比如，我们常用的博客网站的文章列表，当用户量越来越多时，而且每一个用户都有自己的文章列表，而且当文章多时，都需要分页展示，这时可以考虑使用Redis的列表，列表不但有序同时还支持按照范围内获取元素，可以完美解决分页查询功能。大大提高查询效率。
+1. **消息队列**：Redis的链表结构，可以轻松实现阻塞队列，可以使用左进右出的命令组成来完成队列的设计。比如：数据的生产者可以通过lpush命令从左边插入数据，多个数据消费者，可以使用brpop命令阻塞的“抢”列表尾部的数据。
+2. **文章列表或者数据分页展示的应用**：比如，我们常用的博客网站的文章列表，当用户量越来越多时，而且每一个用户都有自己的文章列表，而且当文章多时，都需要分页展示，这时可以考虑使用Redis的列表，列表不但有序同时还支持按照范围内获取元素，可以完美解决分页查询功能。大大提高查询效率。
 
 #### 示例：
 
@@ -109,7 +109,7 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 
 #### 实战场景：
 
-1. **排行榜：**有序集合经典使用场景。例如视频网站需要对用户上传的视频做排行榜，榜单维护可能是多方面：按照时间、按照播放量、按照获得的赞数等。
+1. **排行榜**：有序集合经典使用场景。例如视频网站需要对用户上传的视频做排行榜，榜单维护可能是多方面：按照时间、按照播放量、按照获得的赞数等。
 2. **带权重的队列**：比如普通消息的score为1，重要消息的score为2，然后工作线程可以选择按score的倒序来获取工作任务。让重要的任务优先执行。
 
 #### 示例：
@@ -139,7 +139,7 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 | 13   | [RANDOMKEY](https://www.runoob.com/redis/keys-randomkey.html) 从当前数据库中随机返回一个 key 。 |
 | 14   | [RENAME key newkey](https://www.runoob.com/redis/keys-rename.html) 修改 key 的名称。 |
 | 15   | [RENAMENX key newkey](https://www.runoob.com/redis/keys-renamenx.html) 仅当 newkey 不存在时，将 key 改名为 newkey 。 |
-| 16   | [SCAN cursor [MATCH pattern\] [COUNT count]](https://www.runoob.com/redis/keys-scan.html) 迭代数据库中的数据库键。 |
+| 16   | [SCAN cursor \[MATCH pattern\] \[COUNT count\]](https://www.runoob.com/redis/keys-scan.html) 迭代数据库中的数据库键。 |
 | 17   | [TYPE key](https://www.runoob.com/redis/keys-type.html) 返回 key 所储存的值的类型。 |
 
 ## 3.Redis 字符串命令
@@ -159,8 +159,8 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 | 9    | [SETNX key value](https://www.runoob.com/redis/strings-setnx.html) Redis Setnx（**SET** if **N**ot e**X**ists） 命令在指定的 key 不存在时，为 key 设置指定的值。。 |
 | 10   | [SETRANGE key offset value](https://www.runoob.com/redis/strings-setrange.html) 用 value 参数覆写给定 key 所储存的字符串值，从偏移量 offset 开始。 |
 | 11   | [STRLEN key](https://www.runoob.com/redis/strings-strlen.html) 返回 key 所储存的字符串值的长度。 |
-| 12   | [MSET key value \[key value ...]](https://www.runoob.com/redis/strings-mset.html) 同时设置一个或多个 key-value 对。 |
-| 13   | [MSETNX key value \[key value ...]](https://www.runoob.com/redis/strings-msetnx.html) 同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在。 |
+| 12   | [MSET key value \[key value ...](https://www.runoob.com/redis/strings-mset.html) 同时设置一个或多个 key-value 对。 |
+| 13   | [MSETNX key value \[key value ...](https://www.runoob.com/redis/strings-msetnx.html) 同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在。 |
 | 14   | [PSETEX key milliseconds value](https://www.runoob.com/redis/strings-psetex.html) 这个命令和 SETEX 命令相似，但它以毫秒为单位设置 key 的生存时间，而不是像 SETEX 命令那样，以秒为单位。 |
 | 15   | [INCR key](https://www.runoob.com/redis/strings-incr.html) 将 key 中储存的数字值增一。 |
 | 16   | [INCRBY key increment](https://www.runoob.com/redis/strings-incrby.html) 将 key 所储存的值加上给定的增量值（increment） 。 |
@@ -175,7 +175,7 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 
 | 序号 | 命令及描述                                                   |
 | :--- | :----------------------------------------------------------- |
-| 1    | [HDEL key field1 [field2]](https://www.runoob.com/redis/hashes-hdel.html) 删除一个或多个哈希表字段 |
+| 1    | [HDEL key field1 \[field2\]](https://www.runoob.com/redis/hashes-hdel.html) 删除一个或多个哈希表字段 |
 | 2    | [HEXISTS key field](https://www.runoob.com/redis/hashes-hexists.html) 查看哈希表 key 中，指定的字段是否存在。 |
 | 3    | [HGET key field](https://www.runoob.com/redis/hashes-hget.html) 获取存储在哈希表中指定字段的值。 |
 | 4    | [HGETALL key](https://www.runoob.com/redis/hashes-hgetall.html) 获取在哈希表中指定 key 的所有字段和值 |
@@ -186,7 +186,7 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 | 11   | [HSET key field value](https://www.runoob.com/redis/hashes-hset.html) 将哈希表 key 中的字段 field 的值设为 value 。如果字段是哈希表中的一个新建字段，并且值设置成功，返回 1 。 如果哈希表中域字段已经存在且旧值已被新值覆盖，返回 0 。 |
 | 12   | [HSETNX key field value](https://www.runoob.com/redis/hashes-hsetnx.html) 只有在字段 field 不存在时，设置哈希表字段的值。 |
 | 13   | [HVALS key](https://www.runoob.com/redis/hashes-hvals.html) 获取哈希表中所有值。 |
-| 14   | [HSCAN key cursor [MATCH pattern\] [COUNT count]](https://www.runoob.com/redis/hashes-hscan.html) 迭代哈希表中的键值对。 |
+| 14   | [HSCAN key cursor \[MATCH pattern\] \[COUNT count\]](https://www.runoob.com/redis/hashes-hscan.html) 迭代哈希表中的键值对。 |
 
 ## 5.Redis 列表命令
 
@@ -194,14 +194,14 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 
 | 序号 | 命令及描述                                                   |
 | :--- | :----------------------------------------------------------- |
-| 1    | [BLPOP key1 [key2] timeout](https://www.runoob.com/redis/lists-blpop.html) 移出并获取列表的第一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。 |
-| 2    | [BRPOP key1 [key2 ] timeout](https://www.runoob.com/redis/lists-brpop.html) 移出并获取列表的最后一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。 |
+| 1    | [BLPOP key1 \[key2\] timeout](https://www.runoob.com/redis/lists-blpop.html) 移出并获取列表的第一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。 |
+| 2    | [BRPOP key1 \[key2\] timeout](https://www.runoob.com/redis/lists-brpop.html) 移出并获取列表的最后一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。 |
 | 3    | [BRPOPLPUSH source destination timeout](https://www.runoob.com/redis/lists-brpoplpush.html) 从列表中弹出一个值，将弹出的元素插入到另外一个列表中并返回它； 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。 |
 | 4    | [LINDEX key index](https://www.runoob.com/redis/lists-lindex.html) 通过索引获取列表中的元素 |
-| 5    | [LINSERT key BEFORE\|AFTER pivot value](https://www.runoob.com/redis/lists-linsert.html) 在列表的元素前或者后插入元素 |
+| 5    | [LINSERT key BEFORE or AFTER pivot value](https://www.runoob.com/redis/lists-linsert.html) 在列表的元素前或者后插入元素 |
 | 6    | [LLEN key](https://www.runoob.com/redis/lists-llen.html) 获取列表长度 |
 | 7    | [LPOP key](https://www.runoob.com/redis/lists-lpop.html) 移出并获取列表的第一个元素 |
-| 8    | [LPUSH key value1 [value2]](https://www.runoob.com/redis/lists-lpush.html) 将一个或多个值插入到列表头部 |
+| 8    | [LPUSH key value1 \[value2\]](https://www.runoob.com/redis/lists-lpush.html) 将一个或多个值插入到列表头部 |
 | 9    | [LPUSHX key value](https://www.runoob.com/redis/lists-lpushx.html) 将一个值插入到已存在的列表头部 |
 | 10   | [LRANGE key start stop](https://www.runoob.com/redis/lists-lrange.html) 获取列表指定范围内的元素.。 |
 | 11   | [LREM key count value](https://www.runoob.com/redis/lists-lrem.html) Lrem 根据参数 count 的值，移除列表中与参数 VALUE 相等的元素。若count>0，则从表头开始向表尾搜索，移除与value相等的值，个数为count个；若count<0，则从表尾开始向表头搜索删除；若count=0，则删除与value相等的全部元素。 |
@@ -209,7 +209,7 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 | 13   | [LTRIM key start stop](https://www.runoob.com/redis/lists-ltrim.html) Redis Ltrim 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。下标 0 表示列表的第一个元素，以 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。 |
 | 14   | [RPOP key](https://www.runoob.com/redis/lists-rpop.html) 移除列表的最后一个元素，返回值为移除的元素。 |
 | 15   | [RPOPLPUSH source destination](https://www.runoob.com/redis/lists-rpoplpush.html) 移除列表的最后一个元素，并将该元素添加到另一个列表并返回 |
-| 16   | [RPUSH key value1 [value2]](https://www.runoob.com/redis/lists-rpush.html) 在列表中添加一个或多个值 |
+| 16   | [RPUSH key value1 \[value2\]](https://www.runoob.com/redis/lists-rpush.html) 在列表中添加一个或多个值 |
 | 17   | [RPUSHX key value](https://www.runoob.com/redis/lists-rpushx.html) 为已存在的列表添加值 |
 
 ## 6.Redis 集合命令
@@ -218,21 +218,21 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 
 | 序号 | 命令及描述                                                   |
 | :--- | :----------------------------------------------------------- |
-| 1    | [SADD key member1 [member2]](https://www.runoob.com/redis/sets-sadd.html) 向集合添加一个或多个成员 |
+| 1    | [SADD key member1 \[member2\]](https://www.runoob.com/redis/sets-sadd.html) 向集合添加一个或多个成员 |
 | 2    | [SCARD key](https://www.runoob.com/redis/sets-scard.html) 获取集合的成员数 |
-| 3    | [SDIFF key1 [key2]](https://www.runoob.com/redis/sets-sdiff.html) 返回第一个集合与其他集合之间的差异。 |
-| 4    | [SDIFFSTORE destination key1 [key2]](https://www.runoob.com/redis/sets-sdiffstore.html) 返回给定所有集合的`差集`并存储在 destination 中 |
-| 5    | [SINTER key1 [key2]](https://www.runoob.com/redis/sets-sinter.html) 返回给定所有集合的交集 |
-| 6    | [SINTERSTORE destination key1 [key2]](https://www.runoob.com/redis/sets-sinterstore.html) 返回给定所有集合的`交集`并存储在 destination 中 |
+| 3    | [SDIFF key1 \[key2\]](https://www.runoob.com/redis/sets-sdiff.html) 返回第一个集合与其他集合之间的差异。 |
+| 4    | [SDIFFSTORE destination key1 \[key2\]](https://www.runoob.com/redis/sets-sdiffstore.html) 返回给定所有集合的`差集`并存储在 destination 中 |
+| 5    | [SINTER key1 \[key2\]](https://www.runoob.com/redis/sets-sinter.html) 返回给定所有集合的交集 |
+| 6    | [SINTERSTORE destination key1 \[key2\]](https://www.runoob.com/redis/sets-sinterstore.html) 返回给定所有集合的`交集`并存储在 destination 中 |
 | 7    | [SISMEMBER key member](https://www.runoob.com/redis/sets-sismember.html) 判断 member 元素是否是集合 key 的成员 |
 | 8    | [SMEMBERS key](https://www.runoob.com/redis/sets-smembers.html) 返回集合中的所有成员 |
 | 9    | [SMOVE source destination member](https://www.runoob.com/redis/sets-smove.html) 将 member 元素从 source 集合移动到 destination 集合 |
 | 10   | [SPOP key](https://www.runoob.com/redis/sets-spop.html) 移除并返回集合中的一个随机元素 |
-| 11   | [SRANDMEMBER key [count]](https://www.runoob.com/redis/sets-srandmember.html) 返回集合中一个或多个随机数 |
-| 12   | [SREM key member1 [member2]](https://www.runoob.com/redis/sets-srem.html) 移除集合中一个或多个成员 |
-| 13   | [SUNION key1 [key2]](https://www.runoob.com/redis/sets-sunion.html) 返回所有给定集合的并集 |
-| 14   | [SUNIONSTORE destination key1 [key2]](https://www.runoob.com/redis/sets-sunionstore.html) 所有给定集合的并集存储在 destination 集合中 |
-| 15   | [SSCAN key cursor [MATCH pattern\] [COUNT count]](https://www.runoob.com/redis/sets-sscan.html) 迭代集合中的元素 |
+| 11   | [SRANDMEMBER key \[count\]](https://www.runoob.com/redis/sets-srandmember.html) 返回集合中一个或多个随机数 |
+| 12   | [SREM key member1 \[member2\]](https://www.runoob.com/redis/sets-srem.html) 移除集合中一个或多个成员 |
+| 13   | [SUNION key1 \[key2\]](https://www.runoob.com/redis/sets-sunion.html) 返回所有给定集合的并集 |
+| 14   | [SUNIONSTORE destination key1 \[key2\]](https://www.runoob.com/redis/sets-sunionstore.html) 所有给定集合的并集存储在 destination 集合中 |
+| 15   | [SSCAN key cursor \[MATCH pattern\] \[COUNT count\]](https://www.runoob.com/redis/sets-sscan.html) 迭代集合中的元素 |
 
 ## 7.Redis 有序集合命令
 
@@ -240,26 +240,26 @@ zset的成员是唯一的,但分数(score)却可以重复，就和一个班里�
 
 | 序号 | 命令及描述                                                   |
 | :--- | :----------------------------------------------------------- |
-| 1    | [ZADD key score1 member1 [score2 member2]](https://www.runoob.com/redis/sorted-sets-zadd.html) 向有序集合添加一个或多个成员，或者更新已存在成员的分数 |
+| 1    | [ZADD key score1 member1 \[score2 member2\]](https://www.runoob.com/redis/sorted-sets-zadd.html) 向有序集合添加一个或多个成员，或者更新已存在成员的分数 |
 | 2    | [ZCARD key](https://www.runoob.com/redis/sorted-sets-zcard.html) 获取有序集合的成员数 |
 | 3    | [ZCOUNT key min max](https://www.runoob.com/redis/sorted-sets-zcount.html) 计算在有序集合中指定区间分数的成员数 |
 | 4    | [ZINCRBY key increment member](https://www.runoob.com/redis/sorted-sets-zincrby.html) 有序集合中对指定成员的分数加上增量 increment |
-| 5    | [ZINTERSTORE destination numkeys key [key ...]](https://www.runoob.com/redis/sorted-sets-zinterstore.html) 计算给定的一个或多个有序集的交集并将结果集存储在新的有序集合 destination 中 |
+| 5    | [ZINTERSTORE destination numkeys key \[key ...\]](https://www.runoob.com/redis/sorted-sets-zinterstore.html) 计算给定的一个或多个有序集的交集并将结果集存储在新的有序集合 destination 中 |
 | 6    | [ZLEXCOUNT key min max](https://www.runoob.com/redis/sorted-sets-zlexcount.html) 在有序集合中计算指定字典区间内成员数量 |
-| 7    | [ZRANGE key start stop [WITHSCORES]](https://www.runoob.com/redis/sorted-sets-zrange.html) 通过索引区间返回有序集合指定区间内的成员 |
-| 8    | [ZRANGEBYLEX key min max [LIMIT offset count]](https://www.runoob.com/redis/sorted-sets-zrangebylex.html) 通过字典区间返回有序集合的成员 |
-| 9    | [ZRANGEBYSCORE key min max [WITHSCORES\] [LIMIT]](https://www.runoob.com/redis/sorted-sets-zrangebyscore.html)` 通过分数返回`有序集合指定区间内的成员，有序集成员按分数值递增(从小到大)次序排列。 |
+| 7    | [ZRANGE key start stop \[WITHSCORES\]](https://www.runoob.com/redis/sorted-sets-zrange.html) 通过索引区间返回有序集合指定区间内的成员 |
+| 8    | [ZRANGEBYLEX key min max \[LIMIT offset count\]](https://www.runoob.com/redis/sorted-sets-zrangebylex.html) 通过字典区间返回有序集合的成员 |
+| 9    | [ZRANGEBYSCORE key min max \[WITHSCORES\] \[LIMIT\]](https://www.runoob.com/redis/sorted-sets-zrangebyscore.html)` 通过分数返回`有序集合指定区间内的成员，有序集成员按分数值递增(从小到大)次序排列。 |
 | 10   | [ZRANK key member](https://www.runoob.com/redis/sorted-sets-zrank.html) 返回有序集合中指定成员的索引 |
-| 11   | [ZREM key member [member ...]](https://www.runoob.com/redis/sorted-sets-zrem.html) 移除有序集合中的一个或多个成员 |
+| 11   | [ZREM key member \[member ...\]](https://www.runoob.com/redis/sorted-sets-zrem.html) 移除有序集合中的一个或多个成员 |
 | 12   | [ZREMRANGEBYLEX key min max](https://www.runoob.com/redis/sorted-sets-zremrangebylex.html) 移除有序集合中给定的字典区间的所有成员 |
 | 13   | [ZREMRANGEBYRANK key start stop](https://www.runoob.com/redis/sorted-sets-zremrangebyrank.html) 移除有序集合中给定的排名区间的所有成员 |
 | 14   | [ZREMRANGEBYSCORE key min max](https://www.runoob.com/redis/sorted-sets-zremrangebyscore.html) 移除有序集合中给定的分数区间的所有成员 |
-| 15   | [ZREVRANGE key start stop [WITHSCORES]](https://www.runoob.com/redis/sorted-sets-zrevrange.html) 返回有序集中指定区间内的成员，通过索引，分数从高到低 |
-| 16   | [ZREVRANGEBYSCORE key max min [WITHSCORES]](https://www.runoob.com/redis/sorted-sets-zrevrangebyscore.html) 返回有序集中指定分数区间内的成员，分数从高到低排序 |
+| 15   | [ZREVRANGE key start stop \[WITHSCORES\]](https://www.runoob.com/redis/sorted-sets-zrevrange.html) 返回有序集中指定区间内的成员，通过索引，分数从高到低 |
+| 16   | [ZREVRANGEBYSCORE key max min \[WITHSCORES\]](https://www.runoob.com/redis/sorted-sets-zrevrangebyscore.html) 返回有序集中指定分数区间内的成员，分数从高到低排序 |
 | 17   | [ZREVRANK key member](https://www.runoob.com/redis/sorted-sets-zrevrank.html) 返回有序集合中指定成员的排名，有序集成员按分数值递减(从大到小)排序 |
 | 18   | [ZSCORE key member](https://www.runoob.com/redis/sorted-sets-zscore.html) 返回有序集中，成员的分数值 |
-| 19   | [ZUNIONSTORE destination numkeys key [key ...]](https://www.runoob.com/redis/sorted-sets-zunionstore.html) 计算给定的一个或多个有序集的并集，并存储在新的 key 中 |
-| 20   | [ZSCAN key cursor [MATCH pattern\] [COUNT count]](https://www.runoob.com/redis/sorted-sets-zscan.html) 迭代有序集合中的元素（包括元素成员和元素分值） |
+| 19   | [ZUNIONSTORE destination numkeys key \[key ...\]](https://www.runoob.com/redis/sorted-sets-zunionstore.html) 计算给定的一个或多个有序集的并集，并存储在新的 key 中 |
+| 20   | [ZSCAN key cursor \[MATCH pattern\] \[COUNT count\]](https://www.runoob.com/redis/sorted-sets-zscan.html) 迭代有序集合中的元素（包括元素成员和元素分值） |
 
 ## 补充
 
