@@ -76,11 +76,11 @@
 
 ## 操作系统 💻
 
-- [操作系统基础](os/os.pdf)
+- [图解操作系统-小林coding](os/os.pdf)
 
 ## 网络 ☁️
 
-- [计算机网络基础](network/network.pdf)
+- [图解计算机网络-小林coding](network/network.pdf)
 
 ## Gin框架 🔲
 
