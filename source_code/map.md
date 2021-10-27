@@ -19,7 +19,7 @@ map的底层结构是`hmap`（即hashmap的缩写），**核心元素是一个�
 // go 1.14 src/runtime/map.go:114
 // A header for a Go map.
 type hmap struct {
-    count     int // 元素个数，使用len(map)时返回该值
+	count     int // 元素个数，使用len(map)时返回该值
 	flags     uint8
 	B         uint8  // 说明包含2^B个buckets，bucket中存储了key-value
 	noverflow uint16 // 溢出的buckets近似数;
