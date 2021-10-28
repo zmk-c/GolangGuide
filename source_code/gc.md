@@ -133,5 +133,5 @@ GC 相关的代码在`runtime/mgc.go`文件下。通过注释介绍我们可以�
 >
 > 1. [Go语言——垃圾回收GC](https://www.jianshu.com/p/8b0c0f7772da)
 > 2. [Go语言GC实现原理及源码分析](https://juejin.cn/post/6941768640265977886)
-> 3. [[《Go专家编程》Go 垃圾回收原理](https://my.oschina.net/renhc/blog/2244717)
+> 3. [《Go专家编程》Go 垃圾回收原理](https://my.oschina.net/renhc/blog/2244717)
 > 4. [**golang gc**](http://yangxikun.github.io/golang/2019/12/22/golang-gc.html)
