@@ -251,8 +251,6 @@ newgrp root
 用户名:口令(登录密码，我们不可见，密码在/etc/shadow目录下):用户标识号:组标识号:注释性描述:主目录:登录Shell
 ```
 
-![image-20210721075220906](C:\Users\zmkfm\AppData\Roaming\Typora\typora-user-images\image-20210721075220906.png)
-
 ### 磁盘管理
 
 `df 列出文件系统整体的磁盘使用量`
