@@ -34,16 +34,16 @@
 
 ## 深度解析 📃
 
-1. [Go语言深度解析之slice](source_code/slice.md)
-2. [Go语言深度解析之map](source_code/map.md)
-3. [Go语言深度解析之channel](source_code/channel.md)
-4. [Go语言深度解析之context](source_code/context.md)
-5. [Go语言深度解析之unsafe](source_code/unsafe.md)
-6. [Go语言深度解析之interface](source_code/interface.md)
-7. [Go语言深度解析之reflect](source_code/reflect.md)
-8. [Go语言深度解析之内存分配](source_code/memory_distribution.md)
-9. [Go语言深度解析之垃圾回收机制](source_code/gc.md)
-10. [Go语言深度解析之GPM调度器](source_code/gmp.md)
+1. [Go语言深度解析之slice](golang_deep/slice.md)
+2. [Go语言深度解析之map](golang_deep/map.md)
+3. [Go语言深度解析之channel](golang_deep/channel.md)
+4. [Go语言深度解析之context](golang_deep/context.md)
+5. [Go语言深度解析之unsafe](golang_deep/unsafe.md)
+6. [Go语言深度解析之interface](golang_deep/interface.md)
+7. [Go语言深度解析之reflect](golang_deep/reflect.md)
+8. [Go语言深度解析之内存分配](golang_deep/memory_distribution.md)
+9. [Go语言深度解析之垃圾回收机制](golang_deep/gc.md)
+10. [Go语言深度解析之GPM调度器](golang_deep/gmp.md)
 
 
 ## 算法 ⌛️ 
