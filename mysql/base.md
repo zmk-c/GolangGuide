@@ -32,7 +32,7 @@ DCL数据库控制语言（grant）
 
 操作数据库->操作数据库中的表->操作数据库中表的数据
 
-==关键字不区分大小写==
+> 关键字不区分大小写
 
 ### 2.1操作数据库
 
@@ -1289,6 +1289,8 @@ mysql -uroot -proot school<d:/a.sql;
 
 ## 结束
 
-MySQL基础记录到此结束啦:laughing: ~ 感谢阅读！
+MySQL基础记录到此结束啦~ 
+
+感谢阅读！
 
 > MySQL视频连接：[【狂神说Java】MySQL最新教程通俗易懂_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili](https://www.bilibili.com/video/BV1NJ411J79W)
