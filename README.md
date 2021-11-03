@@ -59,8 +59,6 @@
 - ### MySQL
 
   - [MySQL基础](mysql/base.md)
-  - [MySQL数据库经典面试题解析](mysql/mysql100.md)
-  - [为什么MySQL使用B+树做索引？](mysql/mysql-B+.md)
   - [图解Mysql](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzUxODAzNDg4NQ==&action=getalbum&album_id=1955634887135199237#wechat_redirect)
   
 - ### Redis
