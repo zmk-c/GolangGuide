@@ -1,15 +1,15 @@
 # GolangGuide	制作人——无__忧👦 
 汇总了一些关于Golang的资料提供查看，后续会继续补充完善，欢迎大家star~:smiley:
 
-感谢：公众号【 脑子进煎鱼了】，【码农桃花源】，【小白debug】，【小林coding】
+感谢：公众号【 脑子进煎鱼了】，【码农桃花源】，【小林coding】
 
-|    面试题    |    深度解析    |    算法    |    数据库    |    操作系统    |    网络    |    Gin框架    |    容器化    |    消息队列    |    工具    |
-| :----------: | :------------: | :--------: | :----------: | :------------: | :--------: | :-----------: | :----------: | :------------: | :--------: |
-| [📝](#面试题) | [📃](#深度分析) | [⌛](#算法) | [💾](#数据库) | [💻](#操作系统) | [☁️](#网络) | [🔲](#Gin框架) | [🎰](#容器化) | [✉️](#消息队列) | [🔧](#工具) |
+|    面试题    |    深度解析    |    算法    |    数据库    |    操作系统    |    网络    |    Gin框架    |   常用库   |    消息队列    |    容器化    |
+| :----------: | :------------: | :--------: | :----------: | :------------: | :--------: | :-----------: | :--------: | :------------: | :----------: |
+| [📝](#面试题) | [📃](#深度分析) | [⌛](#算法) | [💾](#数据库) | [💻](#操作系统) | [☁️](#网络) | [🔲](#Gin框架) | [🔧](#工具) | [✉️](#消息队列) | [🎰](#容器化) |
 
 <img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/GolangGuide.jpg" alt="go_monkey" style="zoom:50%;" />
 
-## 面试题 📝
+### 面试题 📝
 
 1. [Go 面试题： new 和 make 是什么，差异在哪？](https://mp.weixin.qq.com/s/tZg3zmESlLmefAWdTR96Tg)
 2. [Go 群友提问：Goroutine 数量控制在多少合适，会影响 GC 和调度？](https://mp.weixin.qq.com/s/uWP2X6iFu7BtwjIv5H55vw)
@@ -32,7 +32,7 @@
 19. [Go 是传值还是传引用？](https://mp.weixin.qq.com/s/qsxvfiyZfRCtgTymO9LBZQ)
 20. [回答我，停止 Goroutine 有几种方法？](https://mp.weixin.qq.com/s/tN8Q1GRmphZyAuaHrkYFEg)
 
-## 深度解析 📃
+### 深度解析 📃
 
 1. [Go语言深度解析之slice](golang_deep/slice.md)
 2. [Go语言深度解析之map](golang_deep/map.md)
@@ -46,7 +46,7 @@
 10. [Go语言深度解析之GPM调度器](golang_deep/gmp.md)
 
 
-## 算法 ⌛️ 
+### 算法 ⌛️ 
 
 - [《剑指offer》](https://leetcode-cn.com/study-plan/lcof/)
 - 常见共识算法
@@ -54,7 +54,7 @@
   - [PBFT协议](consensus/pbft.md)
   - [Gossip协议](consensus/gossip.md)
 
-## 数据库 💾 
+### 数据库 💾 
 
 - ### MySQL
 
@@ -70,17 +70,16 @@
   - [图解Redis-主从复制](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247495237&idx=1&sn=8302585810958567a57bda3df6c5d036&chksm=f98daaefcefa23f95e9f4ef083bbf6b8ce80794bb00c68d9070f158e6de9a0265ea39b12e560&scene=178&cur_album_id=1790401816640225283#rd)
   - [Redis常见问题](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247495027&idx=1&sn=217af306b07ed0f2a064773541d46721&chksm=f98da9d9cefa20cf7ce2ef0ebf60cf378b79958a2e34559c9da7922be4a946a800ff815f950f&scene=178&cur_album_id=1790401816640225283#rd)
 
-- ### MongDB
 
-## 操作系统 💻
+### 操作系统 💻
 
 - [图解操作系统-小林coding](os/os.pdf)
 
-## 网络 ☁️
+### 网络 ☁️
 
 - [图解计算机网络-小林coding](network/network.pdf)
 
-## Gin框架 🔲
+### Gin框架 🔲
 
 - [Go Gin 系列一：Go 介绍与环境安装](https://mp.weixin.qq.coam/s?__biz=MzUxMDI4MDc1NA==&mid=2247483714&idx=1&sn=0b536199884cb45a1316c77998895baf&chksm=f904141fce739d0978e02147507dc29fadee2e19ac312d34a3190062ae40e62a490fc58df6ae&scene=178&cur_album_id=1383459655464337409#rd)
 - [Go Gin 系列二：初始化项目及公共库](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483807&idx=1&sn=9c7aede4f675f2de49ddc08ab1a95a71&chksm=f90414c2ce739dd4b8711c0043286fba9744b8d9c86c75c7ac7750d28cd2fed43f749eb5de99&scene=178&cur_album_id=1383459655464337409#rd)
@@ -99,10 +98,16 @@
 - [Go Gin 系列十五：生成二维码、合并海报](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483819&idx=6&sn=57f8d9031249f61d039477b11d62612f&chksm=f90414f6ce739de0e0c36a5ad3784e2ebd82e7a8941805d162dbd660e54fe169cd87573b7f34&scene=178&cur_album_id=1383459655464337409#rd)
 - [Go Gin 系列十六：在图片上绘制文字](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483819&idx=7&sn=1929b2cf09de3ec6222281def551a901&chksm=f90414f6ce739de04400958b1f4aebbd331715914b03efad26204ac8ba284d59d89f3af86099&scene=178&cur_album_id=1383459655464337409#rd)
 - [Go Gin 系列十七：用Nginx部署Go应用](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483819&idx=8&sn=c64f86744121ba7f4c2f7b8539de8b7d&chksm=f90414f6ce739de012bbdef88a31e18332a21ea24ba773ef676d5d1ba7e3ab7ebed941aca5c1&scene=178&cur_album_id=1383459655464337409#rd)
-- [番外：Golang 交叉编译](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483826&idx=1&sn=0d01b194dfba78f093134c69bab30e10&chksm=f90414efce739df9a3274ed894cd2e132b8616662f56178f3821478d9eddac812dca9d54688c&scene=178&cur_album_id=1383459655464337409#rd)
-- [番外：请入门 Makefile](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483826&idx=2&sn=386ad6739a1a076b643ff526aff703e7&chksm=f90414efce739df9f6ab6a7d86518b96b5f46c08c8d6f4e29ce03e33ae46053a8efda7d080a4&scene=178&cur_album_id=1383459655464337409#rd)
 
-## 容器化 🎰
+### 常用库 🔧
+
+- [golang常用第三方库](golang/useful_package.md)
+
+### 消息队列 ✉️
+
+- ### RabbitMQ
+
+### 容器化 🎰
 
 - ### gRPC
 
@@ -125,17 +130,5 @@
 
 - ### Kubernetes
 
-## 消息队列 ✉️
 
-- ### [RabbitMQ](rabbitmq/rabbitmq.md)
-
-## 工具 🔧 
-
-- ### [Git](tools/git.md)
-
-- ### [Linux常用指令](tools/linux.md)
-
-- ### [golang常用第三方库](tools/package.md)
-
-  
 
