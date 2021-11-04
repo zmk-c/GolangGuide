@@ -54,9 +54,9 @@ Docker有很多的优点：
 
 **镜像（image）**：docker 镜像就好比一个模板，可以通过这个模板来创建容器服务，redis镜像=>run=>redis01容器（提供服务），通过镜像可以创建多个容器（最终服务运行或者项目运行就是在容器中的）。
 
-**容器（container）：**docker 利用容器技术，独立运行一个或者一组应用，通过镜像来创建的。
+**容器（container）**：docker 利用容器技术，独立运行一个或者一组应用，通过镜像来创建的。
 
-**仓库（repository）:**存放镜像的地方，分为公有仓库和私有仓库。
+**仓库（repository）**：存放镜像的地方，分为公有仓库和私有仓库。
 
 ### 2.安装Docker
 
@@ -823,9 +823,9 @@ UnionFS（联合文件系统）：联合文件系统是一种分层，轻量级�
 
 Docker的镜像实际上由一层一层的文件系统组成，这种层级的文件系统就是UnionFS。
 
-**bootfs(boot file system)**主要包含`bootloader`和`kernel`，bootloader主要引导加载kernel，linux刚启动时会加载bootfs文件系统，在Docker镜像的最底层就是bootfs，这一层与我们典型的Linux/Unix系统是一样的，包含boot加载器和内核，当boot加载完成之后整个内核就都在内存中了，内存的使用权已由bootfs转交给内核，此时系统也会卸载bootfs。
+**bootfs（boot file system）** 主要包含`bootloader`和`kernel`，bootloader主要引导加载kernel，linux刚启动时会加载bootfs文件系统，在Docker镜像的最底层就是bootfs，这一层与我们典型的Linux/Unix系统是一样的，包含boot加载器和内核，当boot加载完成之后整个内核就都在内存中了，内存的使用权已由bootfs转交给内核，此时系统也会卸载bootfs。
 
-**rootfs(root file system)**在bootfs之上，包含的就是典型的Linux系统中的/dev、/proc、/bin、/etc等标准目录和文件。rootfs就是各种不同的操作系统发行版，比如Ubuntu，CentOS等。
+**rootfs（root file system）** 在bootfs之上，包含的就是典型的Linux系统中的/dev、/proc、/bin、/etc等标准目录和文件。rootfs就是各种不同的操作系统发行版，比如Ubuntu，CentOS等。
 
 <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn1.itc.cn%2Fimg8%2Fwb%2Fsmccloud%2F2015%2F05%2F07%2F143098875606357619.JPG&refer=http%3A%2F%2Fn1.itc.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1626744694&t=064263e9cb4f51e8d8f04abd29f36b78" alt="img" style="zoom:50%;" />
 
@@ -833,7 +833,7 @@ Docker的镜像实际上由一层一层的文件系统组成，这种层级的�
 
 <img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/docker_centos.png" alt="image-20210620093348312" style="zoom:50%;" />
 
-对于一个精简的OS，rootfs可以很小，只需要包含最基本的命令，工具和程序库就可以了，因为底层直接用的Host的kernel，自己子需要提供rootfs就可以了。由此可见对于不同的linux发行版,bootfs基本是一致的，rootfs会有所差别，因此不同发行版可以共用bootfs。
+对于一个精简的OS，rootfs可以很小，只需要包含最基本的命令，工具和程序库就可以了，因为底层直接用的宿主机的kernel，自己只需要提供rootfs就可以了。由此可见对于不同的linux发行版,bootfs基本是一致的，rootfs会有所差别，因此不同发行版可以共用bootfs。
 
 ### 3.分层理解
 
@@ -994,7 +994,7 @@ local     juming-nginx
 #如何确定是具名挂载还是匿名挂，还是指定路径挂载！
 -v 容器内路径				  #匿名挂载
 -v 卷名:容器内路径  	   		 #具名挂载
--v /主机路径:容器内路径    	    #指定路径挂载
+-v 主机路径:容器内路径    	    #指定路径挂载
 ```
 
 **拓展**
@@ -1195,7 +1195,7 @@ CMD /bin/bash
 
 ![image-20210621153947706](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%E7%9A%84centos%E9%95%9C%E5%83%8F.png)
 
-我么增加之后的镜像
+增加之后的镜像
 
 ![image-20210621153823174](https://raw.githubusercontent.com/zmk-c/blogImages/master/img/%E8%87%AA%E5%B7%B1%E6%9E%84%E5%BB%BA%E7%9A%84centos.png)
 
