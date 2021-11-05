@@ -1127,13 +1127,13 @@ COPY ["<源路径1>",... "<目标路径>"]
 
 `ENTRYPOINT` 的格式和 `RUN` 指令格式一样，分为两种格式
 
-- `exec` 格式：
+- `shell` 格式：
 
 ```dockerfile
 <ENTRYPOINT> "<CMD>"
 ```
 
-- `shell` 格式：
+- `exec` 格式：
 
 ```dockerfile
 ENTRYPOINT [ "curl", "-s", "http://ip.cn" ]
