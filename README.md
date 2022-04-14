@@ -57,7 +57,7 @@
 ### 数据库 💾 
 
   - [MySQL基础](mysql/base.md)
-  - [图解Mysql](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzUxODAzNDg4NQ==&action=getalbum&album_id=1955634887135199237#wechat_redirect)
+  - [图解Mysql](https://www.xiaolincoding.com/mysql/)
 
 ### 操作系统 💻
 
@@ -91,11 +91,7 @@
 - #### Redis
 
   - [Redis基础](middleware/redis/base.md)
-  - [图解Redis-缓存雪崩、击穿、穿透](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247490008&idx=1&sn=8f576e69ec63e02a8b42a00ae6754f0a&chksm=f98e5d72cef9d464710c891c4c0537c20e4949b39ee70c97c44c3f6f95df83fc406f52fc161b&scene=178&cur_album_id=1790401816640225283#rd)
-  - [图解Redis-持久化|AOF](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247493808&idx=1&sn=588d318ec6e72844841d566f16acaf30&chksm=f98dac1acefa250ce40060899a4030bb7678c45befea408162360db4ef4fa2785feb1544e719&scene=178&cur_album_id=1790401816640225283#rd)
-  - [图解Redis-持久化|RDB](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247494677&idx=1&sn=53f60870b66c731aa6ec5b6e70697eff&chksm=f98da8bfcefa21a9ad7b4d564238931f8457bafb08698301e9672dbc366a034890429fdc1ff1&cur_album_id=1790401816640225283&scene=189#rd)
-  - [图解Redis-主从复制](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247495237&idx=1&sn=8302585810958567a57bda3df6c5d036&chksm=f98daaefcefa23f95e9f4ef083bbf6b8ce80794bb00c68d9070f158e6de9a0265ea39b12e560&scene=178&cur_album_id=1790401816640225283#rd)
-  - [Redis常见问题](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247495027&idx=1&sn=217af306b07ed0f2a064773541d46721&chksm=f98da9d9cefa20cf7ce2ef0ebf60cf378b79958a2e34559c9da7922be4a946a800ff815f950f&scene=178&cur_album_id=1790401816640225283#rd)
+  - [图解Redis](https://www.xiaolincoding.com/redis/)
 - #### [Kafka]()
 
 - #### [ElasticSearch]()
