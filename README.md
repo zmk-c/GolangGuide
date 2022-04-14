@@ -3,9 +3,9 @@
 
 感谢：公众号【 脑子进煎鱼了】，【码农桃花源】，【小林coding】
 
-|    面试题    |    深度解析    |    算法    |    数据库    |    操作系统    |    网络    |    Gin框架    |   常用库   |    消息队列    |    容器化    |
+|    面试题    |    深度解析    |    算法    |    数据库    |    操作系统    |    网络    |    Gin框架    |   中间件     |    容器化    |    常用库    |
 | :----------: | :------------: | :--------: | :----------: | :------------: | :--------: | :-----------: | :--------: | :------------: | :----------: |
-| [📝](#面试题) | [📃](#深度分析) | [⌛](#算法) | [💾](#数据库) | [💻](#操作系统) | [☁️](#网络) | [🔲](#Gin框架) | [🔧](#工具) | [✉️](#消息队列) | [🎰](#容器化) |
+| [📝](#面试题) | [📃](#深度解析) | [⌛](#算法) | [💾](#数据库) | [💻](#操作系统) | [☁️](#网络) | [🔲](#Gin框架) | [✉️](#中间件) | [🎰](#容器化) | [🔧](#常用库) |
 
 <img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/GolangGuide.jpg" alt="go_monkey" style="zoom:50%;" />
 
@@ -56,20 +56,8 @@
 
 ### 数据库 💾 
 
-- ### MySQL
-
   - [MySQL基础](mysql/base.md)
   - [图解Mysql](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzUxODAzNDg4NQ==&action=getalbum&album_id=1955634887135199237#wechat_redirect)
-  
-- ### Redis
-
-  - [Redis基础](redis/base.md)
-  - [图解Redis-缓存雪崩、击穿、穿透](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247490008&idx=1&sn=8f576e69ec63e02a8b42a00ae6754f0a&chksm=f98e5d72cef9d464710c891c4c0537c20e4949b39ee70c97c44c3f6f95df83fc406f52fc161b&scene=178&cur_album_id=1790401816640225283#rd)
-  - [图解Redis-持久化|AOF](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247493808&idx=1&sn=588d318ec6e72844841d566f16acaf30&chksm=f98dac1acefa250ce40060899a4030bb7678c45befea408162360db4ef4fa2785feb1544e719&scene=178&cur_album_id=1790401816640225283#rd)
-  - [图解Redis-持久化|RDB](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247494677&idx=1&sn=53f60870b66c731aa6ec5b6e70697eff&chksm=f98da8bfcefa21a9ad7b4d564238931f8457bafb08698301e9672dbc366a034890429fdc1ff1&cur_album_id=1790401816640225283&scene=189#rd)
-  - [图解Redis-主从复制](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247495237&idx=1&sn=8302585810958567a57bda3df6c5d036&chksm=f98daaefcefa23f95e9f4ef083bbf6b8ce80794bb00c68d9070f158e6de9a0265ea39b12e560&scene=178&cur_album_id=1790401816640225283#rd)
-  - [Redis常见问题](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247495027&idx=1&sn=217af306b07ed0f2a064773541d46721&chksm=f98da9d9cefa20cf7ce2ef0ebf60cf378b79958a2e34559c9da7922be4a946a800ff815f950f&scene=178&cur_album_id=1790401816640225283#rd)
-
 
 ### 操作系统 💻
 
@@ -99,17 +87,22 @@
 - [Go Gin 系列十六：在图片上绘制文字](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483819&idx=7&sn=1929b2cf09de3ec6222281def551a901&chksm=f90414f6ce739de04400958b1f4aebbd331715914b03efad26204ac8ba284d59d89f3af86099&scene=178&cur_album_id=1383459655464337409#rd)
 - [Go Gin 系列十七：用Nginx部署Go应用](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483819&idx=8&sn=c64f86744121ba7f4c2f7b8539de8b7d&chksm=f90414f6ce739de012bbdef88a31e18332a21ea24ba773ef676d5d1ba7e3ab7ebed941aca5c1&scene=178&cur_album_id=1383459655464337409#rd)
 
-### 常用库 🔧
+### 中间件 ✉️
+- #### Redis
 
-- [golang常用第三方库](golang/useful_package.md)
+  - [Redis基础](middleware/redis/base.md)
+  - [图解Redis-缓存雪崩、击穿、穿透](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247490008&idx=1&sn=8f576e69ec63e02a8b42a00ae6754f0a&chksm=f98e5d72cef9d464710c891c4c0537c20e4949b39ee70c97c44c3f6f95df83fc406f52fc161b&scene=178&cur_album_id=1790401816640225283#rd)
+  - [图解Redis-持久化|AOF](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247493808&idx=1&sn=588d318ec6e72844841d566f16acaf30&chksm=f98dac1acefa250ce40060899a4030bb7678c45befea408162360db4ef4fa2785feb1544e719&scene=178&cur_album_id=1790401816640225283#rd)
+  - [图解Redis-持久化|RDB](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247494677&idx=1&sn=53f60870b66c731aa6ec5b6e70697eff&chksm=f98da8bfcefa21a9ad7b4d564238931f8457bafb08698301e9672dbc366a034890429fdc1ff1&cur_album_id=1790401816640225283&scene=189#rd)
+  - [图解Redis-主从复制](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247495237&idx=1&sn=8302585810958567a57bda3df6c5d036&chksm=f98daaefcefa23f95e9f4ef083bbf6b8ce80794bb00c68d9070f158e6de9a0265ea39b12e560&scene=178&cur_album_id=1790401816640225283#rd)
+  - [Redis常见问题](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247495027&idx=1&sn=217af306b07ed0f2a064773541d46721&chksm=f98da9d9cefa20cf7ce2ef0ebf60cf378b79958a2e34559c9da7922be4a946a800ff815f950f&scene=178&cur_album_id=1790401816640225283#rd)
+- #### [Kafka]()
 
-### 消息队列 ✉️
-
-- ### RabbitMQ
+- #### [ElasticSearch]()
 
 ### 容器化 🎰
 
-- ### gRPC
+- #### gRPC
 
   - [gRPC及相关介绍](https://mp.weixin.qq.com/s/bbHqWqtmk_k3-X_1XEDEJw)
   - [gRPC Client and Server](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483721&idx=2&sn=5fab143b3cd50209fafc658aaba7c0e9&chksm=f9041414ce739d023611ac6ff38dbfe81d48591ab24ba37eefb3fe6cb121e89dd46fa2fbb1a9&cur_album_id=1383472721040064512&scene=189#rd)
@@ -123,12 +116,16 @@
   - [gRPC + Zipkin 分布式链路追踪](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483716&idx=3&sn=71c2f616b4bed0af7a6a914e1ee2c1df&chksm=f9041419ce739d0fc3839eaffa7d7075f3be8cda92df241bd3e0e961d7a93b9eafdbf33d2335&cur_album_id=1383472721040064512&scene=189#rd)
   - [总结：万字长文 | 从实践到原理，带你参透 gRPC](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247484984&idx=1&sn=392e258f24aec08f58c84ccaba96b2ae&chksm=f9041365ce739a73054b01edcf31fdf3590fb403b1b48aa7dbeccc74c568e5b0e8a4e838c65e&scene=178&cur_album_id=1383472721040064512#rd)
 
-- ### Docker
+- #### Docker
 
-  - [docker](docker/docker.md)
-  - [docker-compose](docker/docker-compose.md)
+  - [docker介绍](docker/docker.md)
+  - [docker-compose介绍](docker/docker-compose.md)
 
-- ### Kubernetes
+- #### Kubernetes
+
+### 常用库 🔧
+
+- [golang常用第三方库](golang/useful_package.md)
 
 
 
