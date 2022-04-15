@@ -92,7 +92,7 @@
 
   - [Redis基础](middleware/redis/base.md)
   - [图解Redis](https://www.xiaolincoding.com/redis/)
-- #### [Kafka]()
+- #### [Kafka](/middleware/kafka/kafka.md)
 
 - #### [ElasticSearch]()
 
