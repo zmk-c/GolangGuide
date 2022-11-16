@@ -128,7 +128,7 @@
 - [JWT基础概念详解及使用](system-design/security/jwt-intro.md)
 - [JWT优缺点分析以及常见问题解决方案](system-design/security/advantages%26disadvantages-of-jwt.md)
 - [SSO单点登录详解](system-design/security/sso-intro.md)
-- [Casbin访问控制库](system-design/security/casbin-intro.md)
+- [Casbin访问控制详解及使用](system-design/security/casbin-intro.md)
 
 ## 开发工具 🔧
 ### git
