@@ -1,15 +1,16 @@
-# GolangGuide	制作人——无__忧👦 
-汇总了一些关于Golang的资料提供查看，后续会继续补充完善，欢迎大家star~:smiley:
+# GolangGuide  无__忧😃
+汇总了一些关于Golang相关的资料提供查看，后续会继续补充完善，欢迎大家star~:smiley:
 
-感谢：公众号【 脑子进煎鱼了】，【码农桃花源】，【小林coding】
+**感谢：公众号【 脑子进煎鱼了】，【码农桃花源】，【小林coding】以及JavaGuide（github Guide哥）**
 
-|    面试题    |    深度解析    |    算法    |    数据库    |    操作系统    |    网络    |    Gin框架    |   中间件     |    容器化    |    常用库    |
-| :----------: | :------------: | :--------: | :----------: | :------------: | :--------: | :-----------: | :--------: | :------------: | :----------: |
-| [📝](#面试题) | [📃](#深度解析) | [⌛](#算法) | [💾](#数据库) | [💻](#操作系统) | [☁️](#网络) | [🔲](#Gin框架) | [✉️](#中间件) | [🎰](#容器化) | [🔧](#常用库) |
+|    Golang    |    计算机基础    |     数据库    |   开发框架    |   中间件     |    微服务    |    系统设计    |    开发工具    |
+| :----------: | :------------: | :--------: | :----------: | :------------: | :--------: | :-----------: | :--------: |
+| [📝](#Golang) | [💻](#计算机基础) | [💾](#数据库) | [🔲](#开发框架) | [✉️](#中间件) | [🎰](#微服务) | [🔬](#系统设计) | [🔧](#开发工具) |
 
-<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/GolangGuide.jpg" alt="go_monkey" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/zmk-c/blogImages/master/img/GolangGuide.jpg" alt="go_monkey" style="zoom:50%;display:block;margin:0 auto" />
 
-### 面试题 📝
+## Golang 📝
+### 面试题
 
 1. [Go 面试题： new 和 make 是什么，差异在哪？](https://mp.weixin.qq.com/s/tZg3zmESlLmefAWdTR96Tg)
 2. [Go 群友提问：Goroutine 数量控制在多少合适，会影响 GC 和调度？](https://mp.weixin.qq.com/s/uWP2X6iFu7BtwjIv5H55vw)
@@ -32,42 +33,50 @@
 19. [Go 是传值还是传引用？](https://mp.weixin.qq.com/s/qsxvfiyZfRCtgTymO9LBZQ)
 20. [回答我，停止 Goroutine 有几种方法？](https://mp.weixin.qq.com/s/tN8Q1GRmphZyAuaHrkYFEg)
 
-### 深度解析 📃
+### 深度解析
 
-1. [Go语言深度解析之slice](golang/slice.md)
-2. [Go语言深度解析之map](golang/map.md)
-3. [Go语言深度解析之channel](golang/channel.md)
-4. [Go语言深度解析之context](golang/context.md)
-5. [Go语言深度解析之unsafe](golang/unsafe.md)
-6. [Go语言深度解析之interface](golang/interface.md)
-7. [Go语言深度解析之reflect](golang/reflect.md)
-8. [Go语言深度解析之内存分配](golang/memory_distribution.md)
-9. [Go语言深度解析之垃圾回收机制](golang/gc.md)
-10. [Go语言深度解析之GPM调度器](golang/gmp.md)
+1. [Go语言深度解析之slice](golang/deep/slice.md)
+2. [Go语言深度解析之map](golang/deep/map.md)
+3. [Go语言深度解析之channel](golang/deep/channel.md)
+4. [Go语言深度解析之context](golang/deep/context.md)
+5. [Go语言深度解析之unsafe](golang/deep/unsafe.md)
+6. [Go语言深度解析之interface](golang/deep/interface.md)
+7. [Go语言深度解析之reflect](golang/deep/reflect.md)
+8. [Go语言深度解析之内存分配](golang/deep/memory_distribution.md)
+9. [Go语言深度解析之垃圾回收机制](golang/deep/gc.md)
+10. [Go语言深度解析之GPM调度器](golang/deep/gmp.md)
 
+
+## 计算机基础 💻
+### 操作系统
+
+- [图解操作系统](cs-basics/operating-system/os.pdf)
+
+### 网络
+
+- [图解计算机网络](cs-basics/network/network.pdf)
 
 ### 算法 ⌛️ 
 
 - [《剑指offer》](https://leetcode-cn.com/study-plan/lcof/)
 - 常见共识算法
-  - [Raft协议](consensus/raft.md)
-  - [PBFT协议](consensus/pbft.md)
-  - [Gossip协议](consensus/gossip.md)
+  - [Raft协议](cs-basics/consensus/raft.md)
+  - [PBFT协议](cs-basics/consensus/pbft.md)
+  - [Gossip协议](cs-basics/consensus/gossip.md)
 
-### 数据库 💾 
+## 数据库 💾
+### MySQL
 
-  - [MySQL基础](mysql/base.md)
-  - [图解Mysql](https://www.xiaolincoding.com/mysql/)
+  - [MySQL基础](database/mysql/base.md)
+  - [图解MySQL](https://www.xiaolincoding.com/mysql/)
 
-### 操作系统 💻
+### Redis
 
-- [图解操作系统-小林coding](os/os.pdf)
+  - [Redis基础](middleware/redis/base.md)
+  - [图解Redis](https://www.xiaolincoding.com/redis/)
 
-### 网络 ☁️
-
-- [图解计算机网络-小林coding](network/network.pdf)
-
-### Gin框架 🔲
+## 开发框架 🔲
+### Gin
 
 - [Go Gin 系列一：Go 介绍与环境安装](https://mp.weixin.qq.coam/s?__biz=MzUxMDI4MDc1NA==&mid=2247483714&idx=1&sn=0b536199884cb45a1316c77998895baf&chksm=f904141fce739d0978e02147507dc29fadee2e19ac312d34a3190062ae40e62a490fc58df6ae&scene=178&cur_album_id=1383459655464337409#rd)
 - [Go Gin 系列二：初始化项目及公共库](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483807&idx=1&sn=9c7aede4f675f2de49ddc08ab1a95a71&chksm=f90414c2ce739dd4b8711c0043286fba9744b8d9c86c75c7ac7750d28cd2fed43f749eb5de99&scene=178&cur_album_id=1383459655464337409#rd)
@@ -87,18 +96,15 @@
 - [Go Gin 系列十六：在图片上绘制文字](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483819&idx=7&sn=1929b2cf09de3ec6222281def551a901&chksm=f90414f6ce739de04400958b1f4aebbd331715914b03efad26204ac8ba284d59d89f3af86099&scene=178&cur_album_id=1383459655464337409#rd)
 - [Go Gin 系列十七：用Nginx部署Go应用](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483819&idx=8&sn=c64f86744121ba7f4c2f7b8539de8b7d&chksm=f90414f6ce739de012bbdef88a31e18332a21ea24ba773ef676d5d1ba7e3ab7ebed941aca5c1&scene=178&cur_album_id=1383459655464337409#rd)
 
-### 中间件 ✉️
-- #### Redis
+## 中间件 ✉️
+### Kafka
+  - ... 
 
-  - [Redis基础](middleware/redis/base.md)
-  - [图解Redis](https://www.xiaolincoding.com/redis/)
-- #### [Kafka](/middleware/kafka/kafka.md)
+### ElasticSearch
+  - ...
 
-- #### [ElasticSearch]()
-
-### 容器化 🎰
-
-- #### gRPC
+## 微服务 🎰
+### gRPC
 
   - [gRPC及相关介绍](https://mp.weixin.qq.com/s/bbHqWqtmk_k3-X_1XEDEJw)
   - [gRPC Client and Server](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483721&idx=2&sn=5fab143b3cd50209fafc658aaba7c0e9&chksm=f9041414ce739d023611ac6ff38dbfe81d48591ab24ba37eefb3fe6cb121e89dd46fa2fbb1a9&cur_album_id=1383472721040064512&scene=189#rd)
@@ -112,16 +118,33 @@
   - [gRPC + Zipkin 分布式链路追踪](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247483716&idx=3&sn=71c2f616b4bed0af7a6a914e1ee2c1df&chksm=f9041419ce739d0fc3839eaffa7d7075f3be8cda92df241bd3e0e961d7a93b9eafdbf33d2335&cur_album_id=1383472721040064512&scene=189#rd)
   - [总结：万字长文 | 从实践到原理，带你参透 gRPC](https://mp.weixin.qq.com/s?__biz=MzUxMDI4MDc1NA==&mid=2247484984&idx=1&sn=392e258f24aec08f58c84ccaba96b2ae&chksm=f9041365ce739a73054b01edcf31fdf3590fb403b1b48aa7dbeccc74c568e5b0e8a4e838c65e&scene=178&cur_album_id=1383472721040064512#rd)
 
-- #### Docker
+### ...
 
-  - [docker介绍](docker/docker.md)
-  - [docker-compose介绍](docker/docker-compose.md)
+## 系统设计 🔬
+### 安全
+#### 认证授权
 
-- #### Kubernetes
+- [认证授权基础概念详解](system-design/security/basis-of-authority-certification.md)
+- [JWT基础概念详解及使用](system-design/security/jwt-intro.md)
+- [JWT优缺点分析以及常见问题解决方案](system-design/security/advantages%26disadvantages-of-jwt.md)
+- [SSO单点登录详解](system-design/security/sso-intro.md)
 
-### 常用库 🔧
+## 开发工具 🔧
+### git
 
-- [golang常用第三方库](golang/useful_package.md)
+  - [git入门](tools/git/git-intro.md)
+  - [github小技巧](tools/git/github-tips.md)
+### Docker
+
+  - [docker介绍](tools/docker/docker.md)
+  - [docker-compose介绍](tools/docker/docker-compose.md)
+
+### Kubernetes
+  - ...
+
+### Golang常用第三方库
+
+  - [常用第三方库](golang/useful_package.md)
 
 
 
