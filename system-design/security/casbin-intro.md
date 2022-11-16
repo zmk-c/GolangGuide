@@ -237,6 +237,68 @@ func main() {
 }
 
 ```
+match匹配规则自定义函数
+```golang
+package main
+
+import (
+	"fmt"
+	"github.com/casbin/casbin/v2"
+	gormadapter "github.com/casbin/gorm-adapter/v3"
+	_ "github.com/go-sql-driver/mysql"
+)
+
+func main() {
+	// 将策略policy保存到数据库中
+	a, _ := gormadapter.NewAdapter("mysql", "root:rootroot@tcp(127.0.0.1:3306)/casbin", true) // Your driver and data source.
+	e, _ := casbin.NewEnforcer("./base/demo_casbin_3/model.conf", a)
+
+	// 在casbin的执行者(enforcer)中添加这个自定义匹配函数
+	e.AddFunction("my_func", KeyMatchFunc)
+
+	// Load the policy from DB.
+	e.LoadPolicy()
+
+	// Check the permission.
+	ok, _ := e.Enforce("zhangsan", "data1", "read")
+	if ok {
+		fmt.Println("匹配成功")
+	} else {
+		fmt.Println("匹配失败")
+	}
+}
+
+// KeyMatch 自定义匹配函数
+func KeyMatch(key1 string, key2 string) bool {
+	// 简单写一下
+	return key1 == key2
+}
+
+// 使用interface{}封装
+func KeyMatchFunc(args ...interface{}) (interface{}, error) {
+	name1 := args[0].(string)
+	name2 := args[1].(string)
+
+	return (bool)(KeyMatch(name1, name2)), nil
+}
+
+```
+此时的model中的match匹配规则为：
+```conf
+[request_definition]
+r = sub, obj, act
+
+[policy_definition]
+p = sub, obj, act
+
+[policy_effect]
+e = some(where (p.eft == allow))
+
+# 可以看到自定义的匹配函数my_func
+[matchers]
+m = r.sub == p.sub && my_func(r.obj,p.obj) && r.act == p.act
+```
+
 
 ## 参考
 - Casbin官方文档 - https://casbin.org/docs/zh-CN/overview
