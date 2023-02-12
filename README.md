@@ -133,8 +133,7 @@
 ## 开发工具 🔧
 ### git
 
-  - [git入门](tools/git/git-intro.md)
-  - [github小技巧](tools/git/github-tips.md)
+  - [git入门](tools/git-intro.md)
 ### Docker
 
   - [docker介绍](tools/docker/docker.md)
